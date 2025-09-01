@@ -1,0 +1,23 @@
+/debug
+/example
+/output
+/models
+
+# Python-specific
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environments
+venv/
+.venv/
+
+# Editor-specific
+.vscode/
+.idea/
+.pycharm/
+
+# Logs and temporary files
+*.log
+*.swp
+*.swo

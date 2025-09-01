@@ -1,0 +1,2097 @@
+{
+  "Version": [
+    "112",
+    "2"
+  ],
+  "fragments": {
+    "unbrokenCGOffset": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "dampingLinearC": [
+      0.02,
+      0.02,
+      0.02
+    ],
+    "dampingLinearV": [
+      0.02,
+      0.02,
+      0.02
+    ],
+    "dampingLinearV2": [
+      0.01,
+      0.01,
+      0.01
+    ],
+    "dampingAngularC": [
+      0.02,
+      0.02,
+      0.02
+    ],
+    "dampingAngularV": [
+      0.02,
+      0.02,
+      0.02
+    ],
+    "dampingAngularV2": [
+      0.01,
+      0.01,
+      0.01
+    ],
+    "estimatedCacheSize": 15272,
+    "estimatedArticulatedCacheSize": 0,
+    "becomeRope": 0,
+    "artAssetID": -1,
+    "attachBottomEnd": 0,
+    "minMoveForce": 0.0,
+    "CenterOfMass": [
+      -0.00842591,
+      -0.02826328,
+      0.1473857
+    ],
+    "gravityFactor": 1.0,
+    "buoyancyFactor": 80.0,
+    "flags": [
+      "DISAPPEARS_WHEN_DEAD",
+      "UNKNWON_FLAG",
+      "FORCE_LOAD_COMMON_DRAWABLE"
+    ],
+    "group": {
+      "chassis": {
+        "strength": 100.0,
+        "forceTransmissionScaleUp": 0.25,
+        "forceTransmissionScaleDown": 0.25,
+        "jointStiffness": 0.0,
+        "minSoftAngle1": -1.0,
+        "maxSoftAngle1": 1.0,
+        "maxSoftAngle2": 1.0,
+        "maxSoftAngle3": 1.0,
+        "rotationSpeed": 0.0,
+        "rotationStrength": 0.0,
+        "restoringStrength": 0.0,
+        "restoringMaxTorque": 0.0,
+        "latchStrength": 0.0,
+        "disappearsWhenDead": 0,
+        "minDamageForce": 100.0,
+        "damageHealth": 1000.0,
+        "group": {
+          "0 door_dside_f": {
+            "strength": 100.0,
+            "forceTransmissionScaleUp": 0.25,
+            "forceTransmissionScaleDown": 0.25,
+            "jointStiffness": 0.0,
+            "minSoftAngle1": -1.0,
+            "maxSoftAngle1": 1.0,
+            "maxSoftAngle2": 1.0,
+            "maxSoftAngle3": 1.0,
+            "rotationSpeed": 0.0,
+            "rotationStrength": 0.0,
+            "restoringStrength": 0.0,
+            "restoringMaxTorque": 0.0,
+            "latchStrength": 0.0,
+            "disappearsWhenDead": 0,
+            "minDamageForce": 100.0,
+            "damageHealth": 1000.0,
+            "group": {
+              "0 window_lf": {
+                "strength": 100.0,
+                "forceTransmissionScaleUp": 0.25,
+                "forceTransmissionScaleDown": 0.25,
+                "jointStiffness": 0.0,
+                "minSoftAngle1": -1.0,
+                "maxSoftAngle1": 1.0,
+                "maxSoftAngle2": 1.0,
+                "maxSoftAngle3": 1.0,
+                "rotationSpeed": 0.0,
+                "rotationStrength": 0.0,
+                "restoringStrength": 0.0,
+                "restoringMaxTorque": 0.0,
+                "latchStrength": 0.0,
+                "disappearsWhenDead": 0,
+                "minDamageForce": 100.0,
+                "damageHealth": 1000.0,
+                "group": null,
+                "child": {
+                  "path": "blista\\window_lf_2.child",
+                  "pristineMass": 0.8292747,
+                  "damagedMass": 0.8292747,
+                  "f50": {
+                    "matrix": [
+                      [
+                        1.0,
+                        0.0,
+                        0.0
+                      ],
+                      [
+                        0.0,
+                        1.0,
+                        0.0
+                      ],
+                      [
+                        0.0,
+                        0.0,
+                        1.0
+                      ],
+                      [
+                        -0.7988215,
+                        0.05539691,
+                        0.08379256
+                      ]
+                    ]
+                  },
+                  "fragment": {
+                    "drawable": {
+                      "lodgroup": {
+                        "high": [
+                          "none",
+                          "0.00000000"
+                        ],
+                        "med": [
+                          "none",
+                          "0.00000000"
+                        ],
+                        "low": [
+                          "none",
+                          "0.00000000"
+                        ],
+                        "vlow": [
+                          "none",
+                          "0.00000000"
+                        ],
+                        "center": [
+                          0.0,
+                          0.0,
+                          0.0
+                        ],
+                        "AABBMin": [
+                          0.0,
+                          0.0,
+                          0.0
+                        ],
+                        "AABBMax": [
+                          0.0,
+                          0.0,
+                          0.0
+                        ],
+                        "radius": 0.0
+                      }
+                    },
+                    "boundTransform": null,
+                    "bound": null
+                  }
+                }
+              }
+            },
+            "child": {
+              "path": "blista\\door_dside_f_1.child",
+              "pristineMass": 19.0906,
+              "damagedMass": 19.0906,
+              "f50": {
+                "matrix": [
+                  [
+                    1.0,
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    1.0
+                  ],
+                  [
+                    -0.7988215,
+                    0.05539691,
+                    0.08379256
+                  ]
+                ]
+              },
+              "fragment": {
+                "drawable": {
+                  "lodgroup": {
+                    "high": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "med": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "low": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "vlow": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "center": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "AABBMin": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "AABBMax": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "radius": 0.0
+                  }
+                },
+                "boundTransform": null,
+                "bound": null
+              }
+            }
+          },
+          "1 door_pside_f": {
+            "strength": 100.0,
+            "forceTransmissionScaleUp": 0.25,
+            "forceTransmissionScaleDown": 0.25,
+            "jointStiffness": 0.0,
+            "minSoftAngle1": -1.0,
+            "maxSoftAngle1": 1.0,
+            "maxSoftAngle2": 1.0,
+            "maxSoftAngle3": 1.0,
+            "rotationSpeed": 0.0,
+            "rotationStrength": 0.0,
+            "restoringStrength": 0.0,
+            "restoringMaxTorque": 0.0,
+            "latchStrength": 0.0,
+            "disappearsWhenDead": 0,
+            "minDamageForce": 100.0,
+            "damageHealth": 1000.0,
+            "group": {
+              "0 window_rf": {
+                "strength": 100.0,
+                "forceTransmissionScaleUp": 0.25,
+                "forceTransmissionScaleDown": 0.25,
+                "jointStiffness": 0.0,
+                "minSoftAngle1": -1.0,
+                "maxSoftAngle1": 1.0,
+                "maxSoftAngle2": 1.0,
+                "maxSoftAngle3": 1.0,
+                "rotationSpeed": 0.0,
+                "rotationStrength": 0.0,
+                "restoringStrength": 0.0,
+                "restoringMaxTorque": 0.0,
+                "latchStrength": 0.0,
+                "disappearsWhenDead": 0,
+                "minDamageForce": 100.0,
+                "damageHealth": 1000.0,
+                "group": null,
+                "child": {
+                  "path": "blista\\window_rf_4.child",
+                  "pristineMass": 0.8291071,
+                  "damagedMass": 0.8291071,
+                  "f50": {
+                    "matrix": [
+                      [
+                        1.0,
+                        0.0,
+                        0.0
+                      ],
+                      [
+                        0.0,
+                        1.0,
+                        0.0
+                      ],
+                      [
+                        0.0,
+                        0.0,
+                        1.0
+                      ],
+                      [
+                        0.7988274,
+                        0.05543494,
+                        0.08379775
+                      ]
+                    ]
+                  },
+                  "fragment": {
+                    "drawable": {
+                      "lodgroup": {
+                        "high": [
+                          "none",
+                          "0.00000000"
+                        ],
+                        "med": [
+                          "none",
+                          "0.00000000"
+                        ],
+                        "low": [
+                          "none",
+                          "0.00000000"
+                        ],
+                        "vlow": [
+                          "none",
+                          "0.00000000"
+                        ],
+                        "center": [
+                          0.0,
+                          0.0,
+                          0.0
+                        ],
+                        "AABBMin": [
+                          0.0,
+                          0.0,
+                          0.0
+                        ],
+                        "AABBMax": [
+                          0.0,
+                          0.0,
+                          0.0
+                        ],
+                        "radius": 0.0
+                      }
+                    },
+                    "boundTransform": null,
+                    "bound": null
+                  }
+                }
+              }
+            },
+            "child": {
+              "path": "blista\\door_pside_f_3.child",
+              "pristineMass": 19.05622,
+              "damagedMass": 19.05622,
+              "f50": {
+                "matrix": [
+                  [
+                    1.0,
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    1.0
+                  ],
+                  [
+                    0.7988274,
+                    0.05543494,
+                    0.08379775
+                  ]
+                ]
+              },
+              "fragment": {
+                "drawable": {
+                  "lodgroup": {
+                    "high": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "med": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "low": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "vlow": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "center": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "AABBMin": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "AABBMax": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "radius": 0.0
+                  }
+                },
+                "boundTransform": null,
+                "bound": null
+              }
+            }
+          },
+          "2 bumper_f": {
+            "strength": 100.0,
+            "forceTransmissionScaleUp": 0.25,
+            "forceTransmissionScaleDown": 0.25,
+            "jointStiffness": 0.0,
+            "minSoftAngle1": -1.0,
+            "maxSoftAngle1": 1.0,
+            "maxSoftAngle2": 1.0,
+            "maxSoftAngle3": 1.0,
+            "rotationSpeed": 0.0,
+            "rotationStrength": 0.0,
+            "restoringStrength": 0.0,
+            "restoringMaxTorque": 0.0,
+            "latchStrength": 0.0,
+            "disappearsWhenDead": 0,
+            "minDamageForce": 100.0,
+            "damageHealth": 1000.0,
+            "group": null,
+            "child": {
+              "path": "blista\\bumper_f_5.child",
+              "pristineMass": 42.7411,
+              "damagedMass": 42.7411,
+              "f50": {
+                "matrix": [
+                  [
+                    1.0,
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    1.0
+                  ],
+                  [
+                    -0.00842591,
+                    -0.02826328,
+                    0.1473857
+                  ]
+                ]
+              },
+              "fragment": {
+                "drawable": {
+                  "lodgroup": {
+                    "high": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "med": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "low": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "vlow": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "center": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "AABBMin": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "AABBMax": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "radius": 0.0
+                  }
+                },
+                "boundTransform": null,
+                "bound": null
+              }
+            }
+          },
+          "3 bumper_r": {
+            "strength": 100.0,
+            "forceTransmissionScaleUp": 0.25,
+            "forceTransmissionScaleDown": 0.25,
+            "jointStiffness": 0.0,
+            "minSoftAngle1": -1.0,
+            "maxSoftAngle1": 1.0,
+            "maxSoftAngle2": 1.0,
+            "maxSoftAngle3": 1.0,
+            "rotationSpeed": 0.0,
+            "rotationStrength": 0.0,
+            "restoringStrength": 0.0,
+            "restoringMaxTorque": 0.0,
+            "latchStrength": 0.0,
+            "disappearsWhenDead": 0,
+            "minDamageForce": 100.0,
+            "damageHealth": 1000.0,
+            "group": null,
+            "child": {
+              "path": "blista\\bumper_r_6.child",
+              "pristineMass": 3.919773,
+              "damagedMass": 3.919773,
+              "f50": {
+                "matrix": [
+                  [
+                    1.0,
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    1.0
+                  ],
+                  [
+                    -0.00842591,
+                    -0.02826328,
+                    0.1473857
+                  ]
+                ]
+              },
+              "fragment": {
+                "drawable": {
+                  "lodgroup": {
+                    "high": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "med": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "low": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "vlow": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "center": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "AABBMin": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "AABBMax": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "radius": 0.0
+                  }
+                },
+                "boundTransform": null,
+                "bound": null
+              }
+            }
+          },
+          "4 bonnet": {
+            "strength": 100.0,
+            "forceTransmissionScaleUp": 0.25,
+            "forceTransmissionScaleDown": 0.25,
+            "jointStiffness": 0.0,
+            "minSoftAngle1": -1.0,
+            "maxSoftAngle1": 1.0,
+            "maxSoftAngle2": 1.0,
+            "maxSoftAngle3": 1.0,
+            "rotationSpeed": 0.0,
+            "rotationStrength": 0.0,
+            "restoringStrength": 0.0,
+            "restoringMaxTorque": 0.0,
+            "latchStrength": 0.0,
+            "disappearsWhenDead": 0,
+            "minDamageForce": 100.0,
+            "damageHealth": 1000.0,
+            "group": null,
+            "child": {
+              "path": "blista\\bonnet_7.child",
+              "pristineMass": 1.889587,
+              "damagedMass": 1.889587,
+              "f50": {
+                "matrix": [
+                  [
+                    1.0,
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    1.0
+                  ],
+                  [
+                    -2e-08,
+                    1.540298,
+                    0.3944942
+                  ]
+                ]
+              },
+              "fragment": {
+                "drawable": {
+                  "lodgroup": {
+                    "high": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "med": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "low": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "vlow": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "center": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "AABBMin": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "AABBMax": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "radius": 0.0
+                  }
+                },
+                "boundTransform": null,
+                "bound": null
+              }
+            }
+          },
+          "5 boot": {
+            "strength": 100.0,
+            "forceTransmissionScaleUp": 0.25,
+            "forceTransmissionScaleDown": 0.25,
+            "jointStiffness": 0.0,
+            "minSoftAngle1": -1.0,
+            "maxSoftAngle1": 1.0,
+            "maxSoftAngle2": 1.0,
+            "maxSoftAngle3": 1.0,
+            "rotationSpeed": 0.0,
+            "rotationStrength": 0.0,
+            "restoringStrength": 0.0,
+            "restoringMaxTorque": 0.0,
+            "latchStrength": 0.0,
+            "disappearsWhenDead": 0,
+            "minDamageForce": 100.0,
+            "damageHealth": 1000.0,
+            "group": {
+              "0 windscreen_r": {
+                "strength": 100.0,
+                "forceTransmissionScaleUp": 0.25,
+                "forceTransmissionScaleDown": 0.25,
+                "jointStiffness": 0.0,
+                "minSoftAngle1": -1.0,
+                "maxSoftAngle1": 1.0,
+                "maxSoftAngle2": 1.0,
+                "maxSoftAngle3": 1.0,
+                "rotationSpeed": 0.0,
+                "rotationStrength": 0.0,
+                "restoringStrength": 0.0,
+                "restoringMaxTorque": 0.0,
+                "latchStrength": 0.0,
+                "disappearsWhenDead": 0,
+                "minDamageForce": 100.0,
+                "damageHealth": 1000.0,
+                "group": null,
+                "child": {
+                  "path": "blista\\windscreen_r_9.child",
+                  "pristineMass": 2.650054,
+                  "damagedMass": 2.650054,
+                  "f50": {
+                    "matrix": [
+                      [
+                        1.0,
+                        0.0,
+                        0.0
+                      ],
+                      [
+                        0.0,
+                        1.0,
+                        0.0
+                      ],
+                      [
+                        0.0,
+                        0.0,
+                        1.0
+                      ],
+                      [
+                        -2.58e-06,
+                        -1.359608,
+                        0.690568
+                      ]
+                    ]
+                  },
+                  "fragment": {
+                    "drawable": {
+                      "lodgroup": {
+                        "high": [
+                          "none",
+                          "0.00000000"
+                        ],
+                        "med": [
+                          "none",
+                          "0.00000000"
+                        ],
+                        "low": [
+                          "none",
+                          "0.00000000"
+                        ],
+                        "vlow": [
+                          "none",
+                          "0.00000000"
+                        ],
+                        "center": [
+                          0.0,
+                          0.0,
+                          0.0
+                        ],
+                        "AABBMin": [
+                          0.0,
+                          0.0,
+                          0.0
+                        ],
+                        "AABBMax": [
+                          0.0,
+                          0.0,
+                          0.0
+                        ],
+                        "radius": 0.0
+                      }
+                    },
+                    "boundTransform": null,
+                    "bound": null
+                  }
+                }
+              }
+            },
+            "child": {
+              "path": "blista\\boot_8.child",
+              "pristineMass": 20.08256,
+              "damagedMass": 20.08256,
+              "f50": {
+                "matrix": [
+                  [
+                    1.0,
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    1.0
+                  ],
+                  [
+                    -2.58e-06,
+                    -1.359608,
+                    0.690568
+                  ]
+                ]
+              },
+              "fragment": {
+                "drawable": {
+                  "lodgroup": {
+                    "high": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "med": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "low": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "vlow": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "center": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "AABBMin": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "AABBMax": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "radius": 0.0
+                  }
+                },
+                "boundTransform": null,
+                "bound": null
+              }
+            }
+          },
+          "6 wing_lf": {
+            "strength": 100.0,
+            "forceTransmissionScaleUp": 0.25,
+            "forceTransmissionScaleDown": 0.25,
+            "jointStiffness": 0.0,
+            "minSoftAngle1": -1.0,
+            "maxSoftAngle1": 1.0,
+            "maxSoftAngle2": 1.0,
+            "maxSoftAngle3": 1.0,
+            "rotationSpeed": 0.0,
+            "rotationStrength": 0.0,
+            "restoringStrength": 0.0,
+            "restoringMaxTorque": 0.0,
+            "latchStrength": 0.0,
+            "disappearsWhenDead": 0,
+            "minDamageForce": 100.0,
+            "damageHealth": 1000.0,
+            "group": null,
+            "child": {
+              "path": "blista\\wing_lf_10.child",
+              "pristineMass": 3.871593,
+              "damagedMass": 3.871593,
+              "f50": {
+                "matrix": [
+                  [
+                    1.0,
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    1.0
+                  ],
+                  [
+                    -0.00842591,
+                    -0.02826328,
+                    0.1473857
+                  ]
+                ]
+              },
+              "fragment": {
+                "drawable": {
+                  "lodgroup": {
+                    "high": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "med": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "low": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "vlow": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "center": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "AABBMin": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "AABBMax": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "radius": 0.0
+                  }
+                },
+                "boundTransform": null,
+                "bound": null
+              }
+            }
+          },
+          "7 wing_rf": {
+            "strength": 100.0,
+            "forceTransmissionScaleUp": 0.25,
+            "forceTransmissionScaleDown": 0.25,
+            "jointStiffness": 0.0,
+            "minSoftAngle1": -1.0,
+            "maxSoftAngle1": 1.0,
+            "maxSoftAngle2": 1.0,
+            "maxSoftAngle3": 1.0,
+            "rotationSpeed": 0.0,
+            "rotationStrength": 0.0,
+            "restoringStrength": 0.0,
+            "restoringMaxTorque": 0.0,
+            "latchStrength": 0.0,
+            "disappearsWhenDead": 0,
+            "minDamageForce": 100.0,
+            "damageHealth": 1000.0,
+            "group": null,
+            "child": {
+              "path": "blista\\wing_rf_11.child",
+              "pristineMass": 3.871593,
+              "damagedMass": 3.871593,
+              "f50": {
+                "matrix": [
+                  [
+                    1.0,
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    1.0
+                  ],
+                  [
+                    -0.00842591,
+                    -0.02826328,
+                    0.1473857
+                  ]
+                ]
+              },
+              "fragment": {
+                "drawable": {
+                  "lodgroup": {
+                    "high": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "med": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "low": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "vlow": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "center": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "AABBMin": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "AABBMax": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "radius": 0.0
+                  }
+                },
+                "boundTransform": null,
+                "bound": null
+              }
+            }
+          },
+          "8 windscreen": {
+            "strength": 100.0,
+            "forceTransmissionScaleUp": 0.25,
+            "forceTransmissionScaleDown": 0.25,
+            "jointStiffness": 0.0,
+            "minSoftAngle1": -1.0,
+            "maxSoftAngle1": 1.0,
+            "maxSoftAngle2": 1.0,
+            "maxSoftAngle3": 1.0,
+            "rotationSpeed": 0.0,
+            "rotationStrength": 0.0,
+            "restoringStrength": 0.0,
+            "restoringMaxTorque": 0.0,
+            "latchStrength": 0.0,
+            "disappearsWhenDead": 0,
+            "minDamageForce": 100.0,
+            "damageHealth": 1000.0,
+            "group": null,
+            "child": {
+              "path": "blista\\windscreen_12.child",
+              "pristineMass": 2.161849,
+              "damagedMass": 2.161849,
+              "f50": {
+                "matrix": [
+                  [
+                    1.0,
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    1.0
+                  ],
+                  [
+                    -0.00842591,
+                    -0.02826328,
+                    0.1473857
+                  ]
+                ]
+              },
+              "fragment": {
+                "drawable": {
+                  "lodgroup": {
+                    "high": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "med": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "low": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "vlow": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "center": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "AABBMin": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "AABBMax": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "radius": 0.0
+                  }
+                },
+                "boundTransform": null,
+                "bound": null
+              }
+            }
+          },
+          "9 extra_2": {
+            "strength": 100.0,
+            "forceTransmissionScaleUp": 0.25,
+            "forceTransmissionScaleDown": 0.25,
+            "jointStiffness": 0.0,
+            "minSoftAngle1": -1.0,
+            "maxSoftAngle1": 1.0,
+            "maxSoftAngle2": 1.0,
+            "maxSoftAngle3": 1.0,
+            "rotationSpeed": 0.0,
+            "rotationStrength": 0.0,
+            "restoringStrength": 0.0,
+            "restoringMaxTorque": 0.0,
+            "latchStrength": 0.0,
+            "disappearsWhenDead": 0,
+            "minDamageForce": 100.0,
+            "damageHealth": 1000.0,
+            "group": null,
+            "child": {
+              "path": "blista\\extra_2_13.child",
+              "pristineMass": 0.596661,
+              "damagedMass": 0.596661,
+              "f50": {
+                "matrix": [
+                  [
+                    1.0,
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    1.0
+                  ],
+                  [
+                    -0.00842591,
+                    -0.02826328,
+                    0.1473857
+                  ]
+                ]
+              },
+              "fragment": {
+                "drawable": {
+                  "lodgroup": {
+                    "high": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "med": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "low": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "vlow": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "center": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "AABBMin": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "AABBMax": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "radius": 0.0
+                  }
+                },
+                "boundTransform": null,
+                "bound": null
+              }
+            }
+          },
+          "10 window_lr": {
+            "strength": 100.0,
+            "forceTransmissionScaleUp": 0.25,
+            "forceTransmissionScaleDown": 0.25,
+            "jointStiffness": 0.0,
+            "minSoftAngle1": -1.0,
+            "maxSoftAngle1": 1.0,
+            "maxSoftAngle2": 1.0,
+            "maxSoftAngle3": 1.0,
+            "rotationSpeed": 0.0,
+            "rotationStrength": 0.0,
+            "restoringStrength": 0.0,
+            "restoringMaxTorque": 0.0,
+            "latchStrength": 0.0,
+            "disappearsWhenDead": 0,
+            "minDamageForce": 100.0,
+            "damageHealth": 1000.0,
+            "group": null,
+            "child": {
+              "path": "blista\\window_lr_14.child",
+              "pristineMass": 2.528106,
+              "damagedMass": 2.528106,
+              "f50": {
+                "matrix": [
+                  [
+                    1.0,
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    1.0
+                  ],
+                  [
+                    -0.00842591,
+                    -0.02826328,
+                    0.1473857
+                  ]
+                ]
+              },
+              "fragment": {
+                "drawable": {
+                  "lodgroup": {
+                    "high": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "med": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "low": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "vlow": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "center": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "AABBMin": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "AABBMax": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "radius": 0.0
+                  }
+                },
+                "boundTransform": null,
+                "bound": null
+              }
+            }
+          },
+          "11 window_rr": {
+            "strength": 100.0,
+            "forceTransmissionScaleUp": 0.25,
+            "forceTransmissionScaleDown": 0.25,
+            "jointStiffness": 0.0,
+            "minSoftAngle1": -1.0,
+            "maxSoftAngle1": 1.0,
+            "maxSoftAngle2": 1.0,
+            "maxSoftAngle3": 1.0,
+            "rotationSpeed": 0.0,
+            "rotationStrength": 0.0,
+            "restoringStrength": 0.0,
+            "restoringMaxTorque": 0.0,
+            "latchStrength": 0.0,
+            "disappearsWhenDead": 0,
+            "minDamageForce": 100.0,
+            "damageHealth": 1000.0,
+            "group": null,
+            "child": {
+              "path": "blista\\window_rr_15.child",
+              "pristineMass": 2.526688,
+              "damagedMass": 2.526688,
+              "f50": {
+                "matrix": [
+                  [
+                    1.0,
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    1.0
+                  ],
+                  [
+                    -0.00842591,
+                    -0.02826328,
+                    0.1473857
+                  ]
+                ]
+              },
+              "fragment": {
+                "drawable": {
+                  "lodgroup": {
+                    "high": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "med": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "low": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "vlow": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "center": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "AABBMin": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "AABBMax": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "radius": 0.0
+                  }
+                },
+                "boundTransform": null,
+                "bound": null
+              }
+            }
+          },
+          "12 extra_1": {
+            "strength": 100.0,
+            "forceTransmissionScaleUp": 0.25,
+            "forceTransmissionScaleDown": 0.25,
+            "jointStiffness": 0.0,
+            "minSoftAngle1": -1.0,
+            "maxSoftAngle1": 1.0,
+            "maxSoftAngle2": 1.0,
+            "maxSoftAngle3": 1.0,
+            "rotationSpeed": 0.0,
+            "rotationStrength": 0.0,
+            "restoringStrength": 0.0,
+            "restoringMaxTorque": 0.0,
+            "latchStrength": 0.0,
+            "disappearsWhenDead": 0,
+            "minDamageForce": 100.0,
+            "damageHealth": 1000.0,
+            "group": null,
+            "child": {
+              "path": "blista\\extra_1_16.child",
+              "pristineMass": 0.5966613,
+              "damagedMass": 0.5966613,
+              "f50": {
+                "matrix": [
+                  [
+                    1.0,
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    1.0
+                  ],
+                  [
+                    -0.00842591,
+                    -0.02826328,
+                    0.1473857
+                  ]
+                ]
+              },
+              "fragment": {
+                "drawable": {
+                  "lodgroup": {
+                    "high": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "med": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "low": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "vlow": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "center": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "AABBMin": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "AABBMax": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "radius": 0.0
+                  }
+                },
+                "boundTransform": null,
+                "bound": null
+              }
+            }
+          },
+          "13 wheel_lr": {
+            "strength": 100.0,
+            "forceTransmissionScaleUp": 0.25,
+            "forceTransmissionScaleDown": 0.25,
+            "jointStiffness": 0.0,
+            "minSoftAngle1": -1.0,
+            "maxSoftAngle1": 1.0,
+            "maxSoftAngle2": 1.0,
+            "maxSoftAngle3": 1.0,
+            "rotationSpeed": 0.0,
+            "rotationStrength": 0.0,
+            "restoringStrength": 0.0,
+            "restoringMaxTorque": 0.0,
+            "latchStrength": 0.0,
+            "disappearsWhenDead": 0,
+            "minDamageForce": 100.0,
+            "damageHealth": 1000.0,
+            "group": null,
+            "child": {
+              "path": "blista\\wheel_lr_17.child",
+              "pristineMass": 34.9157,
+              "damagedMass": 34.9157,
+              "f50": {
+                "matrix": [
+                  [
+                    1.0,
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    1.0
+                  ],
+                  [
+                    -0.00842591,
+                    -0.02826328,
+                    0.1473857
+                  ]
+                ]
+              },
+              "fragment": {
+                "drawable": {
+                  "lodgroup": {
+                    "high": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "med": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "low": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "vlow": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "center": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "AABBMin": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "AABBMax": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "radius": 0.0
+                  }
+                },
+                "boundTransform": null,
+                "bound": null
+              }
+            }
+          },
+          "14 wheel_rr": {
+            "strength": 100.0,
+            "forceTransmissionScaleUp": 0.25,
+            "forceTransmissionScaleDown": 0.25,
+            "jointStiffness": 0.0,
+            "minSoftAngle1": -1.0,
+            "maxSoftAngle1": 1.0,
+            "maxSoftAngle2": 1.0,
+            "maxSoftAngle3": 1.0,
+            "rotationSpeed": 0.0,
+            "rotationStrength": 0.0,
+            "restoringStrength": 0.0,
+            "restoringMaxTorque": 0.0,
+            "latchStrength": 0.0,
+            "disappearsWhenDead": 0,
+            "minDamageForce": 100.0,
+            "damageHealth": 1000.0,
+            "group": null,
+            "child": {
+              "path": "blista\\wheel_rr_18.child",
+              "pristineMass": 34.9157,
+              "damagedMass": 34.9157,
+              "f50": {
+                "matrix": [
+                  [
+                    1.0,
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    1.0
+                  ],
+                  [
+                    -0.00842591,
+                    -0.02826328,
+                    0.1473857
+                  ]
+                ]
+              },
+              "fragment": {
+                "drawable": {
+                  "lodgroup": {
+                    "high": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "med": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "low": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "vlow": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "center": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "AABBMin": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "AABBMax": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "radius": 0.0
+                  }
+                },
+                "boundTransform": null,
+                "bound": null
+              }
+            }
+          },
+          "15 wheel_rf": {
+            "strength": 100.0,
+            "forceTransmissionScaleUp": 0.25,
+            "forceTransmissionScaleDown": 0.25,
+            "jointStiffness": 0.0,
+            "minSoftAngle1": -1.0,
+            "maxSoftAngle1": 1.0,
+            "maxSoftAngle2": 1.0,
+            "maxSoftAngle3": 1.0,
+            "rotationSpeed": 0.0,
+            "rotationStrength": 0.0,
+            "restoringStrength": 0.0,
+            "restoringMaxTorque": 0.0,
+            "latchStrength": 0.0,
+            "disappearsWhenDead": 0,
+            "minDamageForce": 100.0,
+            "damageHealth": 1000.0,
+            "group": null,
+            "child": {
+              "path": "blista\\wheel_rf_19.child",
+              "pristineMass": 34.9157,
+              "damagedMass": 34.9157,
+              "f50": {
+                "matrix": [
+                  [
+                    1.0,
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    1.0
+                  ],
+                  [
+                    -0.00842591,
+                    -0.02826328,
+                    0.1473857
+                  ]
+                ]
+              },
+              "fragment": {
+                "drawable": {
+                  "lodgroup": {
+                    "high": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "med": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "low": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "vlow": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "center": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "AABBMin": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "AABBMax": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "radius": 0.0
+                  }
+                },
+                "boundTransform": null,
+                "bound": null
+              }
+            }
+          },
+          "16 wheel_lf": {
+            "strength": 100.0,
+            "forceTransmissionScaleUp": 0.25,
+            "forceTransmissionScaleDown": 0.25,
+            "jointStiffness": 0.0,
+            "minSoftAngle1": -1.0,
+            "maxSoftAngle1": 1.0,
+            "maxSoftAngle2": 1.0,
+            "maxSoftAngle3": 1.0,
+            "rotationSpeed": 0.0,
+            "rotationStrength": 0.0,
+            "restoringStrength": 0.0,
+            "restoringMaxTorque": 0.0,
+            "latchStrength": 0.0,
+            "disappearsWhenDead": 0,
+            "minDamageForce": 100.0,
+            "damageHealth": 1000.0,
+            "group": null,
+            "child": {
+              "path": "blista\\wheel_lf_20.child",
+              "pristineMass": 34.9157,
+              "damagedMass": 34.9157,
+              "f50": {
+                "matrix": [
+                  [
+                    1.0,
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    1.0
+                  ],
+                  [
+                    -0.00842591,
+                    -0.02826328,
+                    0.1473857
+                  ]
+                ]
+              },
+              "fragment": {
+                "drawable": {
+                  "lodgroup": {
+                    "high": [
+                      "1",
+                      "wheel_lf_20\\wheel_lf_20_high.mesh",
+                      "1",
+                      "9999.00000000"
+                    ],
+                    "med": [
+                      "1",
+                      "wheel_lf_20\\wheel_lf_20_med.mesh",
+                      "2",
+                      "9999.00000000"
+                    ],
+                    "low": [
+                      "none",
+                      "9999.00000000"
+                    ],
+                    "vlow": [
+                      "none",
+                      "9999.00000000"
+                    ],
+                    "center": [
+                      0.010809,
+                      0.0,
+                      1e-06
+                    ],
+                    "AABBMin": [
+                      -0.134068,
+                      -0.335412,
+                      -0.335411
+                    ],
+                    "AABBMax": [
+                      0.124564,
+                      0.335412,
+                      0.335413
+                    ],
+                    "radius": 0.352212
+                  }
+                },
+                "boundTransform": null,
+                "bound": null
+              }
+            }
+          },
+          "17 extra_3": {
+            "strength": 100.0,
+            "forceTransmissionScaleUp": 0.25,
+            "forceTransmissionScaleDown": 0.25,
+            "jointStiffness": 0.0,
+            "minSoftAngle1": -1.0,
+            "maxSoftAngle1": 1.0,
+            "maxSoftAngle2": 1.0,
+            "maxSoftAngle3": 1.0,
+            "rotationSpeed": 0.0,
+            "rotationStrength": 0.0,
+            "restoringStrength": 0.0,
+            "restoringMaxTorque": 0.0,
+            "latchStrength": 0.0,
+            "disappearsWhenDead": 0,
+            "minDamageForce": 100.0,
+            "damageHealth": 1000.0,
+            "group": null,
+            "child": {
+              "path": "blista\\extra_3_21.child",
+              "pristineMass": 0.596661,
+              "damagedMass": 0.596661,
+              "f50": {
+                "matrix": [
+                  [
+                    1.0,
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    1.0
+                  ],
+                  [
+                    -0.00842591,
+                    -0.02826328,
+                    0.1473857
+                  ]
+                ]
+              },
+              "fragment": {
+                "drawable": {
+                  "lodgroup": {
+                    "high": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "med": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "low": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "vlow": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "center": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "AABBMin": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "AABBMax": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "radius": 0.0
+                  }
+                },
+                "boundTransform": null,
+                "bound": null
+              }
+            }
+          },
+          "18 extra_4": {
+            "strength": 100.0,
+            "forceTransmissionScaleUp": 0.25,
+            "forceTransmissionScaleDown": 0.25,
+            "jointStiffness": 0.0,
+            "minSoftAngle1": -1.0,
+            "maxSoftAngle1": 1.0,
+            "maxSoftAngle2": 1.0,
+            "maxSoftAngle3": 1.0,
+            "rotationSpeed": 0.0,
+            "rotationStrength": 0.0,
+            "restoringStrength": 0.0,
+            "restoringMaxTorque": 0.0,
+            "latchStrength": 0.0,
+            "disappearsWhenDead": 0,
+            "minDamageForce": 100.0,
+            "damageHealth": 1000.0,
+            "group": null,
+            "child": {
+              "path": "blista\\extra_4_22.child",
+              "pristineMass": 0.596661,
+              "damagedMass": 0.596661,
+              "f50": {
+                "matrix": [
+                  [
+                    1.0,
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.0,
+                    1.0
+                  ],
+                  [
+                    -0.00842591,
+                    -0.02826328,
+                    0.1473857
+                  ]
+                ]
+              },
+              "fragment": {
+                "drawable": {
+                  "lodgroup": {
+                    "high": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "med": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "low": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "vlow": [
+                      "none",
+                      "0.00000000"
+                    ],
+                    "center": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "AABBMin": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "AABBMax": [
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "radius": 0.0
+                  }
+                },
+                "boundTransform": null,
+                "bound": null
+              }
+            }
+          }
+        },
+        "child": {
+          "path": "blista\\chassis_0.child",
+          "pristineMass": 1843.295,
+          "damagedMass": 1843.295,
+          "f50": {
+            "matrix": [
+              [
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ],
+              [
+                -0.00842591,
+                -0.02826328,
+                0.1473857
+              ]
+            ]
+          },
+          "fragment": {
+            "drawable": {
+              "lodgroup": {
+                "high": [
+                  "none",
+                  "0.00000000"
+                ],
+                "med": [
+                  "none",
+                  "0.00000000"
+                ],
+                "low": [
+                  "none",
+                  "0.00000000"
+                ],
+                "vlow": [
+                  "none",
+                  "0.00000000"
+                ],
+                "center": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "AABBMin": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "AABBMax": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "radius": 0.0
+              }
+            },
+            "boundTransform": null,
+            "bound": null
+          }
+        }
+      }
+    }
+  },
+  "drawable": {},
+  "f8": {}
+}
