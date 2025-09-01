@@ -16,6 +16,7 @@ class ParserMethods:
     for key, value in this.__dict__.items():
 
       if key.startswith('_'):
+        print('JSON avoid', key)
         continue
 
       elif isinstance(value, ParserMethods):
@@ -58,7 +59,7 @@ class ParserMethods:
         case builtins.int:
           value = int(value)
         case builtins.str:
-          pass
+          value = " ".join(value)
       
       setattr(this, key, value)
     else:

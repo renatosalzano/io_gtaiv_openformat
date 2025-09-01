@@ -2,6 +2,7 @@
 /example
 /output
 /models
+/.debug
 
 # Python-specific
 __pycache__/
