@@ -1,4 +1,6 @@
 from .fragments import Fragments
+from .drawable import Drawable
+
 from ..utils.parser import Parser, ParserMethods
 from ..utils import debug
 
@@ -8,7 +10,7 @@ class Oft(ParserMethods):
 
     this.Version = '112 2'
     this.fragments = Fragments()
-    this.drawable = {}
+    this.drawable = Drawable()
     this.f8 = {}
 
     Parser(filepath, this)

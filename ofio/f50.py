@@ -12,7 +12,7 @@ class F50(ParserMethods):
 
   def set(this, _k, _v, item: list[str]):
     value = list(map(string.to_float, item))
-    print('SET F50', value)
+    # print('SET F50', value)
     this.matrix.append(value)
     pass
 

@@ -1,4 +1,5 @@
 import re
+import builtins
 
 def to_float(value: str) -> float:
   value = value.replace(",", ".")
@@ -21,3 +22,12 @@ def is_int(value: str) -> bool:
 def to_path(path):
   path = re.sub("\\\\", "/", path)
   return path
+
+
+def string_to_value(value: str, type_value: type):
+
+  match (type_value):
+    case builtins.tuple:
+      pass
+    case builtins.str:
+      return value

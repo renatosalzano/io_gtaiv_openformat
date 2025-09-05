@@ -9,6 +9,8 @@ Types = Literal['oft', 'mesh', 'child', 'skel']
 
 class ParserMethods:
 
+  _list = False
+
   def to_JSON(this):
 
     output = {}
@@ -16,7 +18,7 @@ class ParserMethods:
     for key, value in this.__dict__.items():
 
       if key.startswith('_'):
-        print('JSON avoid', key)
+        # print('JSON avoid', key)
         continue
 
       elif isinstance(value, ParserMethods):
@@ -38,7 +40,7 @@ class ParserMethods:
   def set(this, key, value, item: list[str]):
 
     if has_setter(this, key):
-      print(f'{key} is protected')
+      # print(f'{key} is protected')
       return
 
     if hasattr(this, key):
@@ -93,7 +95,7 @@ class Parser:
     init_blocks = False
     root_block: ParserMethods = ctor
     curr_block: ParserMethods | None = ctor
-    ref = []
+    ref = [ctor]
 
     for index, line in enumerate(this.lines):
 
@@ -105,6 +107,11 @@ class Parser:
         type, value = this.start_block()
 
         # get nested block
+        print(f'BLOCK - {type}')
+
+        if getattr(curr_block, '_list') == True:
+          print(f'BLOCK LIST - {type}')
+          continue
         
         if has_setter(curr_block, type):
           set_block: Callable[[str], ParserMethods] = get_setter(curr_block, type)
@@ -115,6 +122,7 @@ class Parser:
             curr_block = getattr(curr_block, type)
           else:
             print(f'{type} - is not defined')
+            
 
         ref.append(curr_block)
         continue
@@ -136,7 +144,7 @@ class Parser:
         key, value = unpack(item)
 
         if value is not None:
-          print('set', key, value)
+          # print('set', key, value)
           curr_block.set(key, value, item)
 
         

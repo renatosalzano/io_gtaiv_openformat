@@ -31,7 +31,7 @@ class Child(ParserMethods):
 
     this.fragment: Fragment = Fragment()
 
-    Parser(path.join(config.root_dir, this.path), this.fragment)
+    # Parser(path.join(config.root_dir, this.path), this.fragment)
 
     add_child_to_fragments(group_name, this)
     pass
