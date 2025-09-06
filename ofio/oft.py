@@ -11,15 +11,16 @@ class Oft(ParserMethods):
     this.Version = '112 2'
     this.fragments = Fragments()
     this.drawable = Drawable()
-    this.f8 = {}
+    this.f8 = F8()
 
     Parser(filepath, this)
 
     debug.debug_object(this)
-    print('END')
 
     pass
 
 
+class F8(ParserMethods):
 
-
+  def __init__(this):
+    pass

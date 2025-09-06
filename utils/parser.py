@@ -40,6 +40,8 @@ class ParserMethods:
 
   def set(this, key, value, item: list[str]):
 
+    debug.log(f'[parser] set {this.__class__.__name__} "{key}": {value}')
+
     if has_setter(this, key):
       # print(f'{key} is protected')
       return
@@ -47,6 +49,10 @@ class ParserMethods:
     if hasattr(this, key):
 
       v = getattr(this, key)
+
+      if isinstance(v, ParserMethods):
+        debug.log(f'[parser] cannot set "{key}" because is class')
+        return
 
       match type(v):
 
@@ -59,14 +65,20 @@ class ParserMethods:
           pass
         case builtins.float:
           value = float(value)
+          pass
         case builtins.int:
           value = int(value)
+          pass
         case builtins.str:
           value = " ".join(value)
       
       setattr(this, key, value)
     else:
       debug.log(f'[Parser] cannot set property: "{key}" in {this.__class__.__name__}')
+
+
+  def get_name(this):
+    return this.__class__.__name__
 
 class Parser:
 
@@ -107,14 +119,13 @@ class Parser:
       if "{" in line:
         type, value = this.start_block()
 
-        # get nested block
-        debug.log(f'[Parser] block: "{type}"')
+        debug.log(f'[Parser] BLOCK "{type}"')
 
-        if hasattr(curr_block, '_list'):
-          if getattr(curr_block, '_list') == True:
-            debug.log(f'[Parser] block: "{type}" is list')
-            continue
+        if this.is_list_block(curr_block):
+          debug.log(f'[Parser] BLOCK "{type}" is list')
+          continue
         
+        # get nested block
         if has_setter(curr_block, type):
           set_block: Callable[[str], ParserMethods] = get_setter(curr_block, type)
           curr_block = set_block(value)
@@ -123,13 +134,20 @@ class Parser:
           if hasattr(curr_block, type):
             curr_block = getattr(curr_block, type)
           else:
-            debug.log(f'[Parser] block: "{type}" is not defined')
-            
+            debug.log(f'[Parser] BLOCK "{type}" is not defined')
 
-        ref.append(curr_block)
+        if isinstance(curr_block, object):
+          ref.append(curr_block)
+        else:
+          debug.log(f'[parser] ERROR - {curr_block} is not object')
         continue
 
       if "}" in line:
+
+        curr_block = ref[-1]
+
+        if isinstance(curr_block, ParserMethods):
+          debug.log(f'[parser] END BLOCK "{curr_block.get_name()}"')
 
         ref.pop()
 
@@ -167,6 +185,12 @@ class Parser:
       value = rest[0]
 
     return type.lower(), value
+  
+
+  def is_list_block(this, curr_block):
+    if hasattr(curr_block, '_list'):
+      return getattr(curr_block, '_list')
+    return False
 
 
 def has_setter(cls, key):

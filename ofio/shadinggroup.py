@@ -21,22 +21,31 @@ index = {
 class Shadinggroup(ParserMethods):
 
   def __init__(this):
-    this.Shaders: dict[str, Shader] = {}
-    this._list = True
+    this.shaders = Shaders()
     pass
 
   def set_Shaders(this, value):
     print(value)
     pass
 
+
+class Shaders(ParserMethods):
+
+  def __init__(this):
+    this._list = True
+
   def set(this, key, _v, item: list[str]):
     
-    if key != 'Shaders':
-      shader = Shader(item)
-      this.Shaders[shader.shader_name] = shader
+    shader = Shader(item)
+    setattr(this, shader.shader_name, shader)
+    print('setted', shader.shader_name)
 
     # this.Shaders.append(shader)
     pass
+
+  def to_JSON(this):
+    print('try to JSONIFY')
+    return {}
 
 
 class Shader:
@@ -166,9 +175,9 @@ class Shader:
 
     output = {}
 
-    for key, value in this.__dict__.items():
+    # for key, value in this.__dict__.items():
 
-      if value is not None:
-        output[key] = value
+    #   if value is not None:
+    #     output[key] = value
 
     return output

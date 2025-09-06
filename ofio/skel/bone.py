@@ -1,0 +1,40 @@
+from ...utils.parser import ParserMethods
+from ...utils import debug, path
+
+from typing import Callable
+
+class Bone(ParserMethods):
+
+  def _add_bone(bone):
+    pass
+
+  def __init__(this, _add_bone: Callable):
+    this.Flags = ""
+    this.Index = 0
+    this.Id = 0
+    this.Mirror = 0
+    this.LocalOffset = (0.0, 0.0, 0.0)
+    this.RotationEuler = (0.0, 0.0, 0.0)
+    this.RotationQuaternion = (0.0, 0.0, 0.0, 0.0)
+    this.Scale = (0.0, 0.0, 0.0)
+    this.WorldOffset = (0.0, 0.0, 0.0)
+    this.Orient = (0.0, 0.0, 0.0)
+    this.Sorient = (0.0, 0.0, 0.0)
+    this.TransMin = (0.0, 0.0, 0.0)
+    this.TransMax = (0.0, 0.0, 0.0)
+    this.RotMin = (0.0, 0.0, 0.0)
+    this.RotMax = (0.0, 0.0, 0.0)
+    this.Children = None
+    this.bone: dict[str, Bone] = None
+
+    this._add_bone = _add_bone
+
+    _add_bone(this)
+
+  
+  def set_bone(this, bone_name):
+
+    if this.bone is None:
+      this.bone = {}
+
+    this.bone[bone_name] = Bone(this._add_bone)
