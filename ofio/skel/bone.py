@@ -24,13 +24,18 @@ class Bone(ParserMethods):
     this.TransMax = (0.0, 0.0, 0.0)
     this.RotMin = (0.0, 0.0, 0.0)
     this.RotMax = (0.0, 0.0, 0.0)
-    this.Children = None
+    this.Children = 0
+
     this.bone: dict[str, Bone] = None
 
     this._add_bone = _add_bone
 
     _add_bone(this)
 
+
+  def set_children(this, count: int):
+    # this.Children = count
+    return this
   
   def set_bone(this, bone_name):
 
@@ -38,3 +43,5 @@ class Bone(ParserMethods):
       this.bone = {}
 
     this.bone[bone_name] = Bone(this._add_bone)
+    
+    return this.bone.get(bone_name)

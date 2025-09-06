@@ -32,20 +32,26 @@ class Shadinggroup(ParserMethods):
 class Shaders(ParserMethods):
 
   def __init__(this):
-    this._list = True
+    this._is_array_block = True
 
   def set(this, key, _v, item: list[str]):
     
     shader = Shader(item)
     setattr(this, shader.shader_name, shader)
-    print('setted', shader.shader_name)
 
     # this.Shaders.append(shader)
     pass
 
   def to_JSON(this):
-    print('try to JSONIFY')
-    return {}
+
+    output = {}
+
+    for key, value in this.__dict__.items():
+
+      if isinstance(value, Shader):
+        output[key] = value.to_JSON()
+
+    return output
 
 
 class Shader:
@@ -118,7 +124,7 @@ class Shader:
 
     for key in shader_keys:
 
-      vecT, type_value = types.get_type(key)
+      type_value = types.get_type(key)
       value = shader_data[index]
 
       debug.log(f'[shader] "{key}": {value}')
@@ -129,10 +135,10 @@ class Shader:
 
         if keys_len > data_len:
           # skip optional value
-          debug.log(f'[shader] - optional "{key}" is not present')
+          debug.log(f'[shader] optional "{key}" is not present')
           continue
 
-      match (type_value):
+      match (type(type_value)):
         case builtins.tuple:
           data = value.split(';')
           parsed_value = []
@@ -152,16 +158,18 @@ class Shader:
             pass
           else:
 
-            for i in range(len(vecT)):
+            for i in range(len(type_value)):
               parsed_value.append(float(data[i]))
             pass
 
           setattr(this, key, parsed_value)
-
-          pass
         case builtins.float:
           setattr(this, key, float(value))
-          pass
+        case builtins.str:
+          setattr(this, key, value)
+
+        case _:
+          debug.log('[shader] - unknown "{key}"')
 
       index += 1
       
@@ -175,9 +183,9 @@ class Shader:
 
     output = {}
 
-    # for key, value in this.__dict__.items():
+    for key, value in this.__dict__.items():
 
-    #   if value is not None:
-    #     output[key] = value
+      if value is not None:
+        output[key] = value
 
     return output

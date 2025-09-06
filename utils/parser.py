@@ -3,14 +3,16 @@ import builtins
 from . import debug
 
 from .string import is_int, to_float, is_float
+from . import path
 
-from typing import Literal, Callable
+from typing import NewType, Literal, Callable
 
 Types = Literal['oft', 'mesh', 'child', 'skel']
 
+
 class ParserMethods:
 
-  _list = False
+  _is_array_block = False
 
   def to_JSON(this):
 
@@ -43,7 +45,7 @@ class ParserMethods:
     debug.log(f'[parser] set {this.__class__.__name__} "{key}": {value}')
 
     if has_setter(this, key):
-      # print(f'{key} is protected')
+      debug.log(f'[parser] "{key}" has custom setter')
       return
 
     if hasattr(this, key):
@@ -51,7 +53,7 @@ class ParserMethods:
       v = getattr(this, key)
 
       if isinstance(v, ParserMethods):
-        debug.log(f'[parser] cannot set "{key}" because is class')
+        debug.log(f'[parser] cannot set "{key}" because is block')
         return
 
       match type(v):
@@ -74,27 +76,31 @@ class ParserMethods:
       
       setattr(this, key, value)
     else:
-      debug.log(f'[Parser] cannot set property: "{key}" in {this.__class__.__name__}')
+      debug.log(f'[parser] cannot set property: "{key}" in {this.__class__.__name__}')
 
 
   def get_name(this):
     return this.__class__.__name__
 
+
 class Parser:
 
   def __init__(this, filepath: str, ctor):
 
-    debug.log(f'[Parser] init parsing: "{filepath}"')
+    debug.log(f'[parser] init parsing: "{filepath}"')
 
     file = open(filepath, 'r')
 
     # this.ctor: ParserMethods = ctor
-    this.ext: Types = os.path.splitext(filepath)[1]
+    this.ext: Types = path.ext(filepath)
     this.lines = file.readlines()
     this.index = 0
 
     this.prev_line: str = ''
     this.curr_line: str = ''
+
+    # if 'mesh' in this.ext:
+    #   breakpoint()
 
     this.parse(ctor)
 
@@ -117,13 +123,16 @@ class Parser:
       this.curr_line = clean_line(line)
 
       if "{" in line:
+
+        if this.is_array_block(curr_block):
+          debug.log(f'[parser] ARRAY BLOCK "{curr_block.get_name()}"')
+          continue
+
         type, value = this.start_block()
 
-        debug.log(f'[Parser] BLOCK "{type}"')
+        debug.log(f'[parser] BLOCK "{type}"')
 
-        if this.is_list_block(curr_block):
-          debug.log(f'[Parser] BLOCK "{type}" is list')
-          continue
+        
         
         # get nested block
         if has_setter(curr_block, type):
@@ -134,7 +143,7 @@ class Parser:
           if hasattr(curr_block, type):
             curr_block = getattr(curr_block, type)
           else:
-            debug.log(f'[Parser] BLOCK "{type}" is not defined')
+            debug.log(f'[parser] BLOCK "{type}" is not defined')
 
         if isinstance(curr_block, object):
           ref.append(curr_block)
@@ -187,9 +196,9 @@ class Parser:
     return type.lower(), value
   
 
-  def is_list_block(this, curr_block):
-    if hasattr(curr_block, '_list'):
-      return getattr(curr_block, '_list')
+  def is_array_block(this, curr_block):
+    if hasattr(curr_block, '_is_array_block'):
+      return getattr(curr_block, '_is_array_block')
     return False
 
 

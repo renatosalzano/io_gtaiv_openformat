@@ -9,15 +9,15 @@ class Drawable(ParserMethods):
 
   def __init__(this):
     this.shadinggroup = Shadinggroup()
-    this.skel: Skel = None
+    this.skel: Skel = Skel()
     this.lodgroup = Lodgroup()
 
   
-  def set_skel(this, filepath):
+  # def set_skel(this, filepath):
 
-    if filepath == '':
-      return this
+  #   if filepath == '':
+  #     return this
 
-    debug.log(f'[drawable] - skel path: "{filepath}"')
-    this.skel = Skel(filepath)
-    return this.skel
+  #   debug.log(f'[drawable] - skel path: "{filepath}"')
+  #   setattr(this, 'skel', Skel(filepath))
+  #   return this.skel

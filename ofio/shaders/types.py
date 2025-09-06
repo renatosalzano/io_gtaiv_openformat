@@ -10,48 +10,48 @@ vec3 = NewType('vec3', tuple[float, float, float])
 dimmerset_vec4 = NewType('dimmerset_vec4', tuple[vec4, vec4, vec4, vec4, vec4, vec4, vec4, vec4, vec4, vec4, vec4, vec4, vec4, vec4, vec4])
 
 types = {
-  "bump_strength": float,
+  "bump_strength": float(),
   "bump_strength_vec4": Vec4,
-  "bump_texture": str,
+  "bump_texture": str(),
 
   "dirt_decal_mask": Vec4,
-  "dirt_texture": str,
+  "dirt_texture": str(),
   "dimmerset": dimmerset,
   
-  "emissive_multiplier": float,
-  "environment_texture": str,
+  "emissive_multiplier": float(),
+  "environment_texture": str(),
 
-  "fade_thickness": float,
+  "fade_thickness": float(),
   
   "diffuse_color": Vec3,
   "diffuse2_spec_mod": Vec4,
   
-  "parallax_scale_bias": float,
+  "parallax_scale_bias": float(),
   
-  "reflective_pow": float,
+  "reflective_pow": float(),
   
   "spec_map_strenght": Vec3,
-  "spec_texture": str,
-  "spec_color_factor": float,
-  "spec_factor": float,
-  "spec_factor": float,
+  "spec_texture": str(),
+  "spec_color_factor": float(),
+  "spec_factor": float(),
+  "spec_factor": float(),
   "spec2_color_strength": Vec4,
   "spec2_factor": Vec4,
 
-  "texture": str,
-  "texture2": str,
-  "texture_0": str,
-  "texture_1": str,
-  "texture_2": str,
-  "texture_3": str,
+  "texture": str(),
+  "texture2": str(),
+  "texture_0": str(),
+  "texture_1": str(),
+  "texture_2": str(),
+  "texture_3": str(),
   
-  "zshift": float,
+  "zshift": float(),
 }
 
 
 def get_type(key: str):
   if key in types:
-    return (types[key], type(types[key]))
+    return types[key]
   else:
     debug.log(f'[types] - "{key}" is not defined')
-    return (None, None)
+    return None
