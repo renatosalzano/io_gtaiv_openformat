@@ -25,7 +25,7 @@ gta_spec_decal = (
   "spec_factor",
   "spec_color_factor",
   "spec_map_strenght",
-  "reflective_power",
+  "reflective_pow",
   "spec_texture",
   "environment_texture"
 )
@@ -35,7 +35,7 @@ gta_spec_reflect = (
   "spec_factor",
   "spec_color_factor",
   "spec_map_strenght",
-  "reflective_power",
+  "reflective_pow",
   "spec_texture",
   "environment_texture"
 )
@@ -45,7 +45,7 @@ gta_spec_reflect_alpha = (
   "spec_factor",
   "spec_color_factor",
   "spec_map_strenght",
-  "reflective_power",
+  "reflective_pow",
   "spec_texture",
   "environment_texture"
 )

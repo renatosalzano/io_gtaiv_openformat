@@ -10,7 +10,7 @@ gta_normal_alpha = (
 gta_normal_cubemap_reflect = (
   "texture",
   "bump_strength",
-  "reflective_power",
+  "reflective_pow",
   "bump_texture",
   "environment_texture"
 )
@@ -37,7 +37,7 @@ gta_normal_decal = (
 gta_normal_reflect = (
   "texture",
   "bump_strength",
-  "reflective_power",
+  "reflective_pow",
   "bump_texture",
   "environment_texture"
 )
@@ -46,7 +46,7 @@ gta_normal_reflect = (
 gta_normal_reflect_alpha = (
   "texture",
   "bump_strength",
-  "reflective_power",
+  "reflective_pow",
   "bump_texture",
   "environment_texture"
 )
@@ -55,7 +55,7 @@ gta_normal_reflect_alpha = (
 gta_normal_reflect_decal = (
   "texture",
   "bump_strength",
-  "reflective_power",
+  "reflective_pow",
   "bump_texture",
   "environment_texture"
 )
@@ -89,7 +89,7 @@ gta_normal_spec_cubemap_reflect = (
   "spec_color_factor",
   "spec_map_strenght",
   "bump_strength",
-  "reflective_power",
+  "reflective_pow",
   "bump_texture",
   "spec_texture",
   "environment_texture"
@@ -113,7 +113,7 @@ gta_normal_spec_reflect = (
   "spec_color_factor",
   "spec_map_strenght",
   "bump_strength",
-  "reflective_power",
+  "reflective_pow",
   "bump_texture",
   "spec_texture",
   "environment_texture"
@@ -126,7 +126,7 @@ gta_normal_spec_reflect_alpha = (
   "spec_color_factor",
   "spec_map_strenght",
   "bump_strength",
-  "reflective_power",
+  "reflective_pow",
   "bump_texture",
   "spec_texture",
   "environment_texture"
@@ -139,7 +139,7 @@ gta_normal_spec_reflect_decal = (
   "spec_color_factor",
   "spec_map_strenght",
   "bump_strength",
-  "reflective_power",
+  "reflective_pow",
   "bump_texture",
   "spec_texture",
   "environment_texture"
@@ -154,7 +154,7 @@ gta_normal_spec_reflect_emissive = (
   "spec_color_factor",
   "spec_map_strenght",
   "bump_strength",
-  "reflective_power",
+  "reflective_pow",
   "bump_texture",
   "spec_texture",
   "environment_texture"
@@ -169,7 +169,7 @@ gta_normal_spec_reflect_emissive_alpha = (
   "spec_color_factor",
   "spec_map_strenght",
   "bump_strength",
-  "reflective_power",
+  "reflective_pow",
   "bump_texture",
   "spec_texture",
   "environment_texture"
@@ -184,7 +184,7 @@ gta_normal_spec_reflect_emissivenight = (
   "spec_color_factor",
   "spec_map_strenght",
   "bump_strength",
-  "reflective_power",
+  "reflective_pow",
   "bump_texture",
   "spec_texture",
   "environment_texture"
@@ -199,7 +199,7 @@ gta_normal_spec_reflect_emissivenight_alpha = (
   "spec_color_factor",
   "spec_map_strenght",
   "bump_strength",
-  "reflective_power",
+  "reflective_pow",
   "bump_texture",
   "spec_texture",
   "environment_texture"

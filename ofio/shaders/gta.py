@@ -2,7 +2,7 @@ gta_alpha = ("texture")
 
 gta_cubemap_reflect = (
   "texture",
-  "reflective_power",
+  "reflective_pow",
   "environment_texture",
 )
 
@@ -14,7 +14,7 @@ gta_default = ("texture")
 
 gta_mirror = (
   "texture",
-  "reflective_power",
+  "reflective_pow",
   "environment_texture"
 )
 
@@ -56,11 +56,11 @@ gta_rmptfx_mesh = (
 gta_trees = (
   "texture",
   "diffuse_color",
-  "spec_factored",
+  "spec_factor",
   "spec_color_factor",
   "spec_map_strenght",
-  "bumpiness_spVector4",
-  "reflective_powered",
+  "bump_strength",
+  "reflective_pow",
   "bump_texture",
   "spec_texture"
 )

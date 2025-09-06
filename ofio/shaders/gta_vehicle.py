@@ -1,34 +1,35 @@
 gta_vehicle_badges = (
-  "texture",
-  "diffuse_color",
-  "spec_factored",
-  "spec_color_factor",
-  "spec_map_strenght",
-  "reflective_powered",
-  "dirt_texture",
-  "spec_texture"
+  "texture", # blista_badges       
+  "diffuse_color", # 2.00000000;5.00000000;5.00000000
+  "spec_factor", # 200.00000000
+  "spec_color_factor", # 0.80000000
+  "spec_map_strenght", # 1.00000000;0.00000000;0.00000000
+  "bump_strength_vec4", # 2.00000000;0.00000000;0.00000000;0.00000000
+  "reflective_pow", # 1.00000000
+  "bump_texture", # blista_badges_normal
+  "spec_texture" # Vehicle_generic_smallspecmap
 )
 
 
 gta_vehicle_chrome = (
-  "texture",
-  "diffuse_color",
-  "spec_factored",
-  "spec_color_factor",
-  "spec_map_strenght",
-  "bumpiness_spVector4",
-  "reflective_powered",
-  "bump_texture",
-  "spec_texture"
+  "texture", # zombieb_badges 
+  "diffuse_color", # 2.00000000;5.00000000;5.00000000
+  "spec_factor", # 180.00000000
+  "spec_color_factor", # 0.20000000
+  "spec_map_strenght", # 1.00000000;0.00000000;0.00000000
+  "reflective_pow", # 1.00000000
+  "dirt_texture", # vehicle_genericmud_car
+  "spec_texture" # zombieb_chrome_spec
 )
+
 
 gta_vehicle_generic = (
   "texture",
   "diffuse_color",
-  "spec_factored",
+  "spec_factor",
   "spec_color_factor",
   "spec_map_strenght",
-  "reflective_powered",
+  "reflective_pow",
   "bump_texture",
   "spec_texture"
 )
@@ -37,10 +38,10 @@ gta_vehicle_generic = (
 gta_vehicle_interior = (
   "texture",
   "diffuse_color",
-  "spec_factored",
+  "spec_factor",
   "spec_color_factor",
   "spec_map_strenght",
-  "reflective_powered",
+  "reflective_pow",
   "spec_texture"
 )
 
@@ -48,11 +49,11 @@ gta_vehicle_interior = (
 gta_vehicle_interior2 = (
   "texture",
   "diffuse_color",
-  "spec_factored",
+  "spec_factor",
   "spec_color_factor",
   "spec_map_strenght",
-  "reflective_powered",
-  "dirt_texture",
+  "reflective_pow",
+  "?dirt_texture",
   "spec_texture"
 )
 
@@ -60,12 +61,10 @@ gta_vehicle_interior2 = (
 gta_vehicle_lights = (
   "texture",
   "diffuse_color",
-  "emissive_multiplier",
-  "dimmerset_list",
-  "spec_factored",
+  "spec_factor",
   "spec_color_factor",
   "spec_map_strenght",
-  "reflective_powered",
+  "reflective_pow",
   "dirt_texture",
   "spec_texture"
 )
@@ -74,12 +73,13 @@ gta_vehicle_lights = (
 gta_vehicle_lightsemissive = (
   "texture",
   "diffuse_color",
-  "spec_factored",
+  "emissive_multiplier",
+  "dimmerset",
+  "spec_factor",
   "spec_color_factor",
   "spec_map_strenght",
-  "reflective_powered",
+  "reflective_pow",
   "dirt_texture",
-  "bump_texture",
   "spec_texture"
 )
 
@@ -87,25 +87,24 @@ gta_vehicle_lightsemissive = (
 gta_vehicle_mesh = (
   "texture",
   "diffuse_color",
-  "spec_factored",
+  "spec_factor",
   "spec_color_factor",
   "spec_map_strenght",
-  "spec2_factored",
-  "spec2_color_strength",
-  "reflective_powered",
+  "reflective_pow",
   "dirt_texture",
+  "bump_texture",
   "spec_texture"
 )
 
 gta_vehicle_nosplash = (
   "texture",
   "diffuse_color",
-  "spec_factored",
+  "spec_factor",
   "spec_color_factor",
   "spec_map_strenght",
-  "spec2_factored",
+  "spec2_factor",
   "spec2_color_strength",
-  "reflective_powered",
+  "reflective_pow",
   "dirt_texture",
   "spec_texture"
 )
@@ -114,12 +113,12 @@ gta_vehicle_nosplash = (
 gta_vehicle_nowater = (
   "texture",
   "diffuse_color",
-  "spec_factored",
+  "spec_factor",
   "spec_color_factor",
   "spec_map_strenght",
-  "spec2_factored",
+  "spec2_factor",
   "spec2_color_strength",
-  "reflective_powered",
+  "reflective_pow",
   "dirt_texture",
   "spec_texture"
 )
@@ -128,12 +127,12 @@ gta_vehicle_nowater = (
 gta_vehicle_paint1 = (
   "texture",
   "diffuse_color",
-  "spec_factored",
+  "spec_factor",
   "spec_color_factor",
   "spec_map_strenght",
-  "spec2_factored",
+  "spec2_factor",
   "spec2_color_strength",
-  "reflective_powered",
+  "reflective_pow",
   "dirt_texture",
   "spec_texture"
 )
@@ -142,28 +141,27 @@ gta_vehicle_paint1 = (
 gta_vehicle_paint2 = (
   "texture",
   "diffuse_color",
-  "spec_factored",
+  "spec_factor",
   "spec_color_factor",
   "spec_map_strenght",
-  "spec2_factored",
+  "spec2_factor",
   "spec2_color_strength",
-  "reflective_powered",
-  "diffuse2_spec_mod",
-  "texture2",
+  "reflective_pow",
   "dirt_texture",
   "spec_texture"
 )
 
-
 gta_vehicle_paint3 = (
   "texture",
   "diffuse_color",
-  "spec_factored",
+  "spec_factor",
   "spec_color_factor",
   "spec_map_strenght",
-  "spec2_factored",
+  "spec2_factor",
   "spec2_color_strength",
-  "reflective_powered",
+  "reflective_pow",
+  "diffuse2_spec_mod",
+  "texture2",
   "dirt_texture",
   "spec_texture"
 )
@@ -172,10 +170,10 @@ gta_vehicle_paint3 = (
 gta_vehicle_rims2 = (
   "texture",
   "diffuse_color",
-  "spec_factored",
+  "spec_factor",
   "spec_color_factor",
   "spec_map_strenght",
-  "reflective_powered",
+  "reflective_pow",
   "dirt_texture",
   "spec_texture"
 )
@@ -184,10 +182,10 @@ gta_vehicle_rims2 = (
 gta_vehicle_rubber = (
   "texture",
   "diffuse_color",
-  "spec_factored",
+  "spec_factor",
   "spec_color_factor",
   "spec_map_strenght",
-  "reflective_powered",
+  "reflective_pow",
   "bump_texture",
   "spec_texture"
 )
@@ -196,11 +194,11 @@ gta_vehicle_rubber = (
 gta_vehicle_shuts = (
   "texture",
   "diffuse_color",
-  "spec_factored",
+  "spec_factor",
   "spec_color_factor",
   "spec_map_strenght",
-  "reflective_powered",
-  "dirt_texture",
+  "reflective_pow",
+  # "dirt_texture",
   "bump_texture",
   "spec_texture"
 )
@@ -208,17 +206,24 @@ gta_vehicle_shuts = (
 gta_vehicle_tire = (
   "texture",
   "diffuse_color",
-  "spec_factored",
+  "spec_factor",
   "spec_color_factor",
   "spec_map_strenght",
-  "reflective_powered",
+  "reflective_pow",
   "dirt_texture",
+  "bump_texture",
   "spec_texture"
 )
 
 
 gta_vehicle_vehglass = (
   "texture",
-  "fade_thickness"
+  "diffuse_color",
+  "spec_factor",
+  "spec_color_factor",
+  "spec_map_strenght",
+  "reflective_pow",
+  "dirt_texture",
+  "spec_texture"
 )
  

@@ -28,6 +28,7 @@ def string_to_value(value: str, type_value: type):
 
   match (type_value):
     case builtins.tuple:
+
       pass
     case builtins.str:
       return value

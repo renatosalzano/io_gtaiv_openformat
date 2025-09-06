@@ -3,7 +3,7 @@ gta_glass = (
   "spec_factor",
   "spec_color_factor",
   "bump_strength",
-  "reflective_power",
+  "reflective_pow",
   "bump_texture",
   "environment_texture"
 )
@@ -16,7 +16,7 @@ gta_glass_emissive = (
   "spec_factor",
   "spec_color_factor",
   "bump_strength",
-  "reflective_power",
+  "reflective_pow",
   "bump_texture",
   "environment_texture"
 )
@@ -29,7 +29,7 @@ gta_glass_emissive_alpha = (
   "spec_factor",
   "spec_color_factor",
   "bump_strength",
-  "reflective_power",
+  "reflective_pow",
   "bump_texture",
   "environment_texture"
 )
@@ -42,7 +42,7 @@ gta_glass_emissivenight = (
   "spec_factor",
   "spec_color_factor",
   "bump_strength",
-  "reflective_power",
+  "reflective_pow",
   "bump_texture",
   "environment_texture"
 )
@@ -55,7 +55,7 @@ gta_glass_emissivenight_alpha = (
   "spec_factor",
   "spec_color_factor",
   "bump_strength",
-  "reflective_power",
+  "reflective_pow",
   "bump_texture",
   "environment_texture"
 )
@@ -67,7 +67,7 @@ gta_glass_normal_spec_reflect = (
   "spec_color_factor",
   "spec_map_strenght",
   "bump_strength",
-  "reflective_power",
+  "reflective_pow",
   "bump_texture",
   "spec_texture",
   "environment_texture"
@@ -78,7 +78,7 @@ gta_glass_reflect = (
   "texture",
   "spec_factor",
   "spec_color_factor",
-  "reflective_power",
+  "reflective_pow",
   "environment_texture"
 )
   

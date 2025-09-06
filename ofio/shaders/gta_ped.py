@@ -11,7 +11,7 @@ gta_ped = (
 
 gta_ped_alpha = (
   "texture",
-  "reflective_power",
+  "reflective_pow",
   "environment_texture",
   "bump_texture",
   "spec_factor",
@@ -24,7 +24,7 @@ gta_ped_alpha = (
 
 gta_ped_reflect = (
   "texture",
-  "reflective_power",
+  "reflective_pow",
   "environment_texture",
   "bump_texture",
   "spec_factor",

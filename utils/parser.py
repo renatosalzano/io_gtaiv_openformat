@@ -1,5 +1,6 @@
 import os
 import builtins
+from . import debug
 
 from .string import is_int, to_float, is_float
 
@@ -65,13 +66,13 @@ class ParserMethods:
       
       setattr(this, key, value)
     else:
-      print(f'{key} not exist')
+      debug.log(f'[Parser] cannot set property: "{key}" in {this.__class__.__name__}')
 
 class Parser:
 
   def __init__(this, filepath: str, ctor):
 
-    print('parse', filepath)
+    debug.log(f'[Parser] init parsing: "{filepath}"')
 
     file = open(filepath, 'r')
 
@@ -107,11 +108,12 @@ class Parser:
         type, value = this.start_block()
 
         # get nested block
-        print(f'BLOCK - {type}')
+        debug.log(f'[Parser] block: "{type}"')
 
-        if getattr(curr_block, '_list') == True:
-          print(f'BLOCK LIST - {type}')
-          continue
+        if hasattr(curr_block, '_list'):
+          if getattr(curr_block, '_list') == True:
+            debug.log(f'[Parser] block: "{type}" is list')
+            continue
         
         if has_setter(curr_block, type):
           set_block: Callable[[str], ParserMethods] = get_setter(curr_block, type)
@@ -121,7 +123,7 @@ class Parser:
           if hasattr(curr_block, type):
             curr_block = getattr(curr_block, type)
           else:
-            print(f'{type} - is not defined')
+            debug.log(f'[Parser] block: "{type}" is not defined')
             
 
         ref.append(curr_block)
