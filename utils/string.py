@@ -1,4 +1,5 @@
 import re
+from typing import TypeVar, Sequence
 import builtins
 
 def to_float(value: str) -> float:
@@ -32,3 +33,9 @@ def string_to_value(value: str, type_value: type):
       pass
     case builtins.str:
       return value
+    
+
+def float_map(string: str, separator = " ") -> list[float]:
+  string = string.strip()
+  array = string.split(separator)
+  return list(builtins.map(float, array))
