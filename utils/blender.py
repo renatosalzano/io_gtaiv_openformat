@@ -15,10 +15,7 @@ def new_collection(name, parent = None):
   return coll
 
 
-def create_mesh(name, verts, idx):
-  mesh_data = bpy.data.meshes.new(name)
-  mesh_data.from_pydata(verts, [], idx)
-  return mesh_data
+
 
 
 def create_mesh_obj(name, mesh = None, collection = None):

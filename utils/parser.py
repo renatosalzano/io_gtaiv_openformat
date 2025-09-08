@@ -16,6 +16,10 @@ class ParserMethods:
   _separator = ' '
 
 
+  def parse(this, filepath):
+    Parser(filepath, this)
+
+
   def to_JSON(this):
 
     output = {}
@@ -87,10 +91,13 @@ class ParserMethods:
   def get_separator(this):
     return this._separator
 
+  def on_parse_complete(this):
+    pass
+
 
 class Parser:
 
-  def __init__(this, filepath: str, ctor):
+  def __init__(this, filepath: str, target: ParserMethods):
 
     debug.log(f'[parser] init parsing: "{filepath}"')
 
@@ -107,7 +114,7 @@ class Parser:
     # if 'mesh' in this.ext:
     #   breakpoint()
 
-    this.parse(ctor)
+    this.parse(target)
 
     file.close()
 
@@ -178,6 +185,7 @@ class Parser:
 
         if isinstance(curr_block, ParserMethods):
           debug.log(f'[parser] END BLOCK "{curr_block.get_name()}"')
+          curr_block.on_parse_complete()
 
         ref.pop()
 

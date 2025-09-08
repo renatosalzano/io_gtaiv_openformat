@@ -6,10 +6,12 @@ def dirname(path: str):
 
 
 def basename(path: str):
+  '''return with ext'''
   return os.path.basename(path)
 
 
 def filename(path: str):
+  '''return without ext'''
   name, _ = os.path.splitext(path)
   return name
 
@@ -25,3 +27,11 @@ def normalize(path: str):
 
 def join(*path):
   return os.path.join(*path)
+
+
+def dirname(path: str):
+  return os.path.dirname(path)
+
+
+def is_dir(path: str):
+  os.path.isdir(path)

@@ -7,7 +7,7 @@ class Idx(ParserMethods):
 
     this._is_array_block = True
 
-    this.idx: list[vec3int] = []
+    this.faces: list[vec3int] = []
     this.count: int = count
     this.offset: int = 0
     this.max_idx: int = 0
@@ -27,7 +27,7 @@ class Idx(ParserMethods):
       tris.append(idx)
 
       if len(tris) == 3:
-        this.idx.append(vec3int(*tris))
+        this.faces.append(vec3int(*tris))
         tris = []
 
 

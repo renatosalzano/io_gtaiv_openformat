@@ -1,3 +1,4 @@
+from ... import config
 from ...utils.parser import ParserMethods
 from ...utils import string
 from ..types import  vec3, vec2, RGBAf
@@ -9,7 +10,8 @@ class Verts(ParserMethods):
     this._separator = '/'
     this._skinned: int = skinned
 
-    this.verts: list[SkinnedVert | Vert] = []
+    this.vertices: list[vec3] = []
+    this.vert_declaration: list[SkinnedVert | Vert] = []
     this.count: int = count
 
   def set(this, _k, _v, vertex_declaration):
@@ -28,11 +30,16 @@ class Verts(ParserMethods):
 
       bone_index = get_bone_index(bone_indexes)
 
-      this.verts.append(SkinnedVert(coord, color, uv_1, uv_2, bone_index))
+      this.vertices.append(coord)
+      this.vert_declaration.append(SkinnedVert(coord, color, uv_1, uv_2, bone_index))
     else:
       # TODO wheelmesh
       coord, normal, color, tangents, uv_1, *_ = vertex_declaration
       pass
+
+
+  def get_vert_declaration(this, index: int):
+    return this.vert_declaration[index]
 
 
 
@@ -45,11 +52,14 @@ class SkinnedVert:
     this.uv_1 = uv_1
     this.uv_2 = uv_2
     this.bone_index = bone_index
+    this.bone_name = config.get_bone_name(bone_index)
 
 
 class Vert:
 
-  def __init__(this):
+  def __init__(this, color: RGBAf, uv_1: vec2):
+    this.color = color
+    this.uv_1 = uv_1
     # TODO
     pass
 
@@ -70,6 +80,7 @@ def to_RGBAf(value: str) -> RGBAf:
   return RGBAf(r, g, b)
 
 
-def get_bone_index(value: str) -> int:
+def get_bone_index(value: str) -> str:
+  value = value.strip()
   index = value.split(" ")[2]
-  return int(index)
+  return index

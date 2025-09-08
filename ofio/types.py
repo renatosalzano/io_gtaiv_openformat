@@ -29,6 +29,10 @@ class vec3int:
       this.z = value
     else:
       raise IndexError("Index out of range for vec3int (expected 0, 1, or 2)")
+    
+
+  def __len__(this):
+    return 3
       
 
   def __repr__(this):

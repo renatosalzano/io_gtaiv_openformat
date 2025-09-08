@@ -16,7 +16,7 @@ class Skel(ParserMethods):
 
     this.bone: dict[str, Bone] = {}
 
-    this._bones: list[Bone] = []
+    this._bones: dict[str, str] = {}
 
   def set(this, key, value, _):
     
@@ -39,9 +39,18 @@ class Skel(ParserMethods):
 
     debug.log(f'[skel] add bone: "{bone_name}"')
 
-    this.bone[bone_name] = Bone(this._add_bone)
+    this.bone[bone_name] = Bone(bone_name, this._add_bone)
     return this.bone.get(bone_name)
     
   
   def _add_bone(this, bone: Bone):
-    this._bones.insert(bone.Index, bone)
+    this._bones[bone.Index] = bone.name
+    config.bones_map[bone.Index] = bone.name
+
+  
+  def _get_bone(this, bone_index: str):
+    
+    if bone_index in this._bones:
+      return this._bones[bone_index]
+    else:
+      raise IndexError(f"Index out of range for vec3 (expected 0 to {this._bones.__len__() - 1})")

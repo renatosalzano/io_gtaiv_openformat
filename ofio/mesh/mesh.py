@@ -3,6 +3,7 @@ from ...utils.parser import Parser, ParserMethods
 from ...utils import path, debug
 from ... import config
 from .mtl import Mtl
+from .veh_chunks import VehChunks
 
 class Mesh(ParserMethods):
 
@@ -15,16 +16,16 @@ class Mesh(ParserMethods):
     this.mtl: list[Mtl] = []
     this.lod = this.set_lod(filepath)
 
+    this.chunks = VehChunks()
 
-    Parser(path.join(config.root_dir, path.normalize(filepath)), this)
+    this.parse(path.join(config.root_dir, path.normalize(filepath)))
 
-    breakpoint()
-    pass
+    this.build()
 
 
   def set_mtl(this, index: str):
     
-    index = int(index)
+    # index = int(index)
 
     curr_mtl = this.mtl[-1] if this.mtl else None
 
@@ -33,7 +34,7 @@ class Mesh(ParserMethods):
       curr_mtl.merge()
     else:
       debug.log(f'[mesh] add Mtl {index}')
-      this.mtl.append(Mtl(index, this.Skinned))
+      this.mtl.append(Mtl(index, this.Skinned, this.chunks))
 
     return this.mtl[-1]
   
@@ -47,3 +48,13 @@ class Mesh(ParserMethods):
     if 'low' in filepath:
       return 'L2'
   
+
+  def build(this):
+
+    debug.log(f'[mesh] build mesh')
+
+    test = this.mtl[0]
+    test.to_mesh()
+    breakpoint()
+
+    

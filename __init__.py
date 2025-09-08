@@ -175,7 +175,12 @@ def menu_func_export(self, context):
   self.layout.operator(GTAIVOF_OP_export.bl_idname, text="GTAIV OpenFormat")
 
 
+from .layout import Debug
+
+
 classes = (
+  Debug.DATA_OT_debug_material,
+  Debug.VIEW3D_PT_debug_panel,
   GTAIVOF_OP_import,
   OFT_PT_import,
   GTAIVOF_OP_export,
@@ -197,9 +202,8 @@ def register():
   # TODO remove export mesh
   # bpy.types.TOPBAR_MT_file_import.append(menu_func_import_mesh)
   # bpy.types.TOPBAR_MT_file_export.append(menu_func_export_mesh)
-  print("ready")
+  print("register complete")
 
-  # bpy.utils.register_class(GTAIV_PT_panel)
 
 def unregister():
   for CLASS in classes:
@@ -210,6 +214,9 @@ def unregister():
   # TODO remove export mesh
   # bpy.types.TOPBAR_MT_file_import.remove(menu_func_import_mesh)
   # bpy.types.TOPBAR_MT_file_export.remove(menu_func_export_mesh)
-  print("end")
+  # print("end")
 
   # bpy.utils.unregister_class(GTAIV_PT_panel)
+
+
+
