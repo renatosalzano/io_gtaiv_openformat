@@ -34,4 +34,31 @@ def dirname(path: str):
 
 
 def is_dir(path: str):
-  os.path.isdir(path)
+  return os.path.isdir(path)
+
+def exist(path: str):
+  return os.path.exists(path)
+
+def find_file(filename: str, to: list[str], extensions: list[str]):
+
+  path = ''
+  found = False
+
+  for dir in to:
+
+    if found:
+      break
+
+    for ext in extensions:
+      test_path = f'{dir}/{filename}{ext}'
+      
+      if exist(test_path):
+        path = test_path
+        filename = f'{filename}{ext}'
+        found = True
+        break
+
+  if not found:
+    print(filename, 'not found')
+
+  return (path, filename)
