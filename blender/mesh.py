@@ -3,8 +3,10 @@ import bmesh
 
 from bmesh.types import BMesh
 from bpy.types import Mesh as mesh, Object
+from ..blender.material import Material
 
 from . import context
+from .. import store
 
 
 class Mesh:
@@ -12,16 +14,18 @@ class Mesh:
   _mesh: mesh
   _bmesh: BMesh
 
-  def __init__(this, name: str, vertices, faces):
+  def __init__(this, name: str, vertices = None, faces = None):
 
+    this._name = name
     this._mesh: mesh = bpy.data.meshes.new(name)
     this._bmesh: Bmesh = None
+    this._object: Object = None
 
     if vertices and faces:
       this.mesh_from_pydata(vertices, faces)
   
 
-  def mesh_from_pydata(this, vertices, faces):
+  def mesh_from_pydata(this, vertices = [], faces = []):
     this._mesh.from_pydata(vertices, [], faces)
     return this._mesh
 
@@ -40,6 +44,50 @@ class Mesh:
     this._bmesh.bmesh.free()
 
     return this._mesh
+  
+
+  def copy(this):
+
+    mesh = Mesh(this._name)
+    mesh._mesh = this._mesh.copy()
+
+    return mesh
+  
+  
+  def to_object(this):
+
+    if this._object:
+      return this._object
+    
+    object = bpy.data.objects.new(this._name, this._mesh)
+
+    if store.main_collection:
+      store.main_collection.objects.link(object)
+    else:
+      bpy.context.collection.objects.link(object)
+
+    this._object = object
+
+    return this._object
+  
+
+  def append_material(this, material: Material):
+
+    if not this._object:
+      this.to_object()
+
+    if isinstance(material, Material):
+      this._object.data.materials.append(material.get_material())
+    else:
+      raise ValueError(f'[blender.mesh] must be Material')
+
+
+  def remove(this):
+
+    if store.main_collection:
+      store.main_collection.objects.unlink(this._object)
+    else:
+      bpy.context.collection.objects.unlink(this._object)
 
 
 class Bmesh:
@@ -66,10 +114,11 @@ class Bmesh:
     bmesh.ops.delete(this.bmesh, geom=selected)
 
 
+
   
 #region METHODS
 
-def join(meshes: list[Mesh], rename: str) -> mesh:
+def join(meshes: list[Object], rename: str = None) -> Object:
 
   context.deselect_all()
 
@@ -77,18 +126,20 @@ def join(meshes: list[Mesh], rename: str) -> mesh:
     return meshes[0]
   
 
-  result = meshes[0]._mesh
+  result = meshes[0]
 
   if rename:
     result.name = rename
   
   context.set_active(result)
 
-  for mesh in meshes:
-    object: Object = mesh._mesh
+  for object in meshes:
     object.select_set(state=True)
 
   context.join()
+  
+  bpy.ops.object.shade_smooth()
+
   context.deselect_all()
 
   return result

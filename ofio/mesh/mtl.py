@@ -1,5 +1,5 @@
 
-from ... import config
+from ... import store
 from ...utils.parser import ParserMethods
 from ...utils import debug
 from ...blender.mesh import Mesh
@@ -48,12 +48,12 @@ class Mtl(ParserMethods):
 
   def to_mesh(this):
 
-    mesh = Mesh(this.index, this.verts.vertices, this.idx.faces)
+    mesh = Mesh(f'TMP_MESH_MTL_{this.index}', this.verts.vertices, this.idx.faces)
     bmesh = mesh.to_bmesh()
 
     uv_1 = bmesh.loops.layers.uv.new("UV1")
 
-    if config.is_vehicle:
+    if store.is_vehicle:
       uv_2 = bmesh.loops.layers.uv.new("UV2")
 
     ao = bmesh.loops.layers.color.new("ao")
@@ -67,15 +67,15 @@ class Mtl(ParserMethods):
         loop[uv_1].uv = vert.uv_1
         loop[ao] = vert.color.rgba
 
-        if config.is_vehicle:
+        if store.is_vehicle:
           loop[uv_2].uv = vert.uv_2
 
           this.chunks.set(vert.bone_name, this.index, loop.vert.index)
           # self.chunks[chunk_index].set(mtl_index, loop.vert.index)
 
-
-      
-    pass
+    mesh.commit_bmesh()
+    
+    return mesh
 
 
 

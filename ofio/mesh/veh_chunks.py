@@ -25,3 +25,7 @@ class VehChunks:
       this.chunks[bone_name] = Chunk()
 
     this.chunks[bone_name].set(mtl_index, idx)
+
+
+  def items(this):
+    return this.chunks.items()

@@ -1,5 +1,5 @@
 
-from ... import config
+from ... import store
 from ...utils import path
 from ...ofio.types import RGBAf, vec3, vec2
 from .ShaderNode import ShaderNode
@@ -12,6 +12,7 @@ class ImageTexture(ShaderNode):
     name: str = None,
     image: str = ''
   ):
+    super().__init__()
     this.name = name
     this.type = 'ShaderNodeTexImage'
 
@@ -20,9 +21,9 @@ class ImageTexture(ShaderNode):
       filepath, filename = path.find_file(
         filename=image,
         to=[
-          f'{config.root_dir}/{config.filename}/texture',
-          f'{config.root_dir}/vehshare',
-          f'{config.root_dir}/texture'
+          f'{store.root_dir}/{store.filename}/texture',
+          f'{store.root_dir}/vehshare',
+          f'{store.root_dir}/texture'
         ],
         extensions=['.png', '.dds']
       )
@@ -34,7 +35,7 @@ class ImageTexture(ShaderNode):
         else:
           image = data.load_image(filepath)
 
-        this.settings.image = image
+        this.settings['image'] = image
     
 
 
@@ -43,10 +44,10 @@ class ImageTexture(ShaderNode):
     return (this.node, 'Vector', 0)
 
 
-  def Color(this, link):
+  def _Color(this, link):
     this.material.link((this.node, 'Color'), link)
 
 
-  def Alpha(this, link):
+  def _Alpha(this, link):
     this.material.link((this.node, 'Alpha'), link)
 

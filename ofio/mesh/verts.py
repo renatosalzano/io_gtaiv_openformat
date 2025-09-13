@@ -1,4 +1,4 @@
-from ... import config
+from ... import store
 from ...utils.parser import ParserMethods
 from ...utils import string
 from ..types import  vec3, vec2, RGBAf
@@ -52,7 +52,7 @@ class SkinnedVert:
     this.uv_1 = uv_1
     this.uv_2 = uv_2
     this.bone_index = bone_index
-    this.bone_name = config.get_bone_name(bone_index)
+    this.bone_name = store.get_bone_name(bone_index)
 
 
 class Vert:

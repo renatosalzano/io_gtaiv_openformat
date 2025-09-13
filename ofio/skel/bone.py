@@ -29,7 +29,7 @@ class Bone(ParserMethods):
     this.RotMax = (0.0, 0.0, 0.0)
     this.Children = 0
 
-    this.bone: dict[str, Bone] = None
+    this.children: dict[str, Bone] = None
 
     this._add_bone = _add_bone
 
@@ -40,13 +40,17 @@ class Bone(ParserMethods):
   
   def set_bone(this, bone_name):
 
-    if this.bone is None:
-      this.bone = {}
+    if this.children is None:
+      this.children = {}
 
-    this.bone[bone_name] = Bone(bone_name, this._add_bone)
+    this.children[bone_name] = Bone(bone_name, this._add_bone)
     
-    return this.bone.get(bone_name)
+    return this.children.get(bone_name)
   
+
+  def haschildrens(this):
+    return this.children is not None
+
   
   def on_parse_complete(this):
     this._add_bone(this)

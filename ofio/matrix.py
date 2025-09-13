@@ -1,9 +1,9 @@
-from mathutils import Matrix
+from mathutils import Matrix as matrix
 from ..utils.parser import ParserMethods
 from ..utils import string
 
 
-class F50(ParserMethods):
+class Matrix(ParserMethods):
 
   def __init__(this):
 
@@ -20,11 +20,11 @@ class F50(ParserMethods):
   def get_matrix(self):
     X, Y, Z, Txyz = self.matrix
 
-    matrix = Matrix((
+    ret = matrix((
     #  X    , Y    , Z    , Txyz
       (*X, -Txyz[0]),
       (*Y, -Txyz[1]),
       (*Z, Txyz[2]),
       (0.0, 0.0, 0.0, 1.0),
     ))
-    return matrix
+    return ret

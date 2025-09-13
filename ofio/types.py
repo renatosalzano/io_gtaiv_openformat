@@ -1,4 +1,40 @@
+class vec4:
+    
+  def __init__(this, x: float, y: float, z: float, w: float):
+    this.x = x
+    this.y = y
+    this.z = z
+    this.w = w
 
+
+  def __getitem__(this, index):
+    if index == 0:
+      return this.x
+    elif index == 1:
+      return this.y
+    elif index == 2:
+      return this.z
+    elif index == 3:
+      return this.w
+    else:
+      raise IndexError("Index out of range for vec3 (expected 0, 1, 2, 3)")
+
+
+  def __setitem__(this, index, value):
+    if index == 0:
+      this.x = value
+    elif index == 1:
+      this.y = value
+    elif index == 2:
+      this.z = value
+    elif index == 3:
+      this.w = value
+    else:
+      raise IndexError("Index out of range for vec3 (expected 0, 1, 2, 3)")
+      
+
+  def __repr__(this):
+    return f"vec3(x={this.x}, y={this.y}, z={this.z}, w={this.w})"
 
 
 class vec3int:
@@ -118,6 +154,8 @@ class RGBAf:
   def rgba(this):
     return (this.r, this.g, this.b, this.a)
   
+
+
 
 
     

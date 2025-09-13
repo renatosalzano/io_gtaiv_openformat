@@ -11,7 +11,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-from . import config
+from . import store
 from .utils import path
 
 from bpy.types import Context
@@ -77,8 +77,8 @@ class GTAIVOF_OP_import(bpy.types.Operator, ImportHelper):
 
     ext = path.ext(this.filepath)
 
-    config.basename = path.filename(this.filepath)
-    config.root_dir = path.dirname(this.filepath)
+    store.filename = path.filename(this.filepath)
+    store.root_dir = path.dirname(this.filepath)
 
     match ext:
       
@@ -155,8 +155,8 @@ class GTAIVOF_OP_export(bpy.types.Operator, ImportHelper):
       print("collection not found")
       return {'FINISHED'}
     
-    config.collection = bpy.context.collection
-    config.export_path = self.filepath
+    store.collection = bpy.context.collection
+    store.export_path = self.filepath
     
     match gta_iv_data["type"]:
       case "odd":
@@ -179,6 +179,7 @@ from .layout import Debug
 
 
 classes = (
+  Debug.DATA_OT_fast_import,
   Debug.DATA_OT_debug_material,
   Debug.VIEW3D_PT_debug_panel,
   GTAIVOF_OP_import,
@@ -195,6 +196,7 @@ classes = (
 def register():
   # import
   for CLASS in classes:
+    print(f'register {CLASS.__name__}')
     bpy.utils.register_class(CLASS)
 
   bpy.types.TOPBAR_MT_file_import.append(menu_func_import)

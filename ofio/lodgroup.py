@@ -1,6 +1,6 @@
 from ..utils.parser import ParserMethods
 from ..utils import debug, path
-from .. import config
+from .. import store
 
 class Lodgroup(ParserMethods):
 
@@ -30,7 +30,7 @@ class Lodgroup(ParserMethods):
 
           for _ in range(count):
             debug.log(f'[lodgroup] lod "{key}": {filepath}')
-            this._lods[key].append(path.join(config.root_dir, filepath))
+            this._lods[key].append(path.join(store.root_dir, filepath))
 
         super().set(key, value, item)
 

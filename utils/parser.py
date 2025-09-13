@@ -13,6 +13,7 @@ Types = Literal['oft', 'mesh', 'child', 'skel']
 class ParserMethods:
 
   _is_array_block = False
+  _set_block = False
   _separator = ' '
 
 
@@ -44,7 +45,11 @@ class ParserMethods:
         output[key] = value
 
     return output
-  
+
+
+  def set_block(this, key: str, value: str):
+    pass
+
 
   def set(this, key, value, item: list[str]):
 
@@ -138,15 +143,20 @@ class Parser:
 
         type, value = this.start_block()
 
+        if this.set_block(curr_block):
+
+          curr_block = curr_block.set_block(type, value)
+          ref.append(curr_block)
+          continue
+
         if has_setter(curr_block, type):
           debug.log(f'[parser] SET BLOCK "{curr_block.get_name()}"')
 
           set_block: Callable[[str], ParserMethods] = get_setter(curr_block, type)
           curr_block = set_block(value)
           ref.append(curr_block)
-
           continue
-        
+
 
         if this.is_array_block(curr_block):
           debug.log(f'[parser] ARRAY BLOCK "{curr_block.get_name()}"')
@@ -225,6 +235,11 @@ class Parser:
 
     return type.lower(), value
   
+
+  def set_block(this, curr_block):
+    if hasattr(curr_block, '_set_block'):
+      return getattr(curr_block, '_set_block')
+    return False
 
   def is_array_block(this, curr_block):
     if hasattr(curr_block, '_is_array_block'):

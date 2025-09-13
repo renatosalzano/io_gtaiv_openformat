@@ -12,12 +12,14 @@ def basename(path: str):
 
 def filename(path: str):
   '''return without ext'''
-  name, _ = os.path.splitext(path)
+  base = basename(path)
+  name, _ = os.path.splitext(base)
   return name
 
 
 def ext(path: str):
-  _, extension = os.path.splitext(path)
+  base = basename(path)
+  _, extension = os.path.splitext(base)
   return extension
 
 

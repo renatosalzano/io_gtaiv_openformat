@@ -1,5 +1,5 @@
 from .bone import Bone
-from ... import config
+from ... import store
 from ...utils.parser import Parser, ParserMethods
 from ...utils import debug, path
 
@@ -23,7 +23,7 @@ class Skel(ParserMethods):
     if key == 'skel':
       this.skel = path.normalize(value)
       debug.log(f'[skel] filepath: "{this.skel}"')
-      Parser(path.join(config.root_dir, this.skel), this)
+      Parser(path.join(store.root_dir, this.skel), this)
     else:
       super().set(key, value, _)
 
@@ -45,7 +45,7 @@ class Skel(ParserMethods):
   
   def _add_bone(this, bone: Bone):
     this._bones[bone.Index] = bone.name
-    config.bones_map[bone.Index] = bone.name
+    store.bones_map[bone.Index] = bone.name
 
   
   def _get_bone(this, bone_index: str):

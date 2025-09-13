@@ -4,6 +4,8 @@ from bpy.types import Material as material, Node as node, ShaderNode as shaderno
 from mathutils import Vector
 
 from .shader_node.shaders import ShaderNode, MaterialOutput
+from ..utils import debug
+
 from typing import TypeVar
 
 T = TypeVar('T', bound=ShaderNode)
@@ -12,14 +14,17 @@ class Material:
 
   def __init__(this, name: str):
 
+    debug.log(f'[material] create "{name}"')
+
     materials = bpy.data.materials
 
     if name in materials:
-      this._material = materials[name]
-    else:
-      this._material = materials.new(name)
-      this._material.use_nodes = True
-      this.remove_node('Principled BSDF')
+      bpy.data.materials.remove(materials[name])
+      
+
+    this._material: material = materials.new(name)
+    this._material.use_nodes = True
+    this.remove_node('Principled BSDF')
 
     this._output: MaterialOutput = None
 
@@ -41,8 +46,10 @@ class Material:
     _nodes = this.get_nodes()
     _node: shadernode = _nodes.new(node.type)
 
+
     node.material = this
     node.node = _node
+    node.init_node()
 
     return node
   
@@ -77,9 +84,13 @@ class Material:
 
     offset_x = output_node.width / 2 + input_node.width / 2 + 200.0
 
-    output_node.location = input_node.location - Vector((offset_x, offset_index * 300.0))
+    output_node.location = input_node.location - Vector((offset_x, offset_index * 150.0))
 
     links.new(output, input)
+
+
+  def get_material(this):
+    return this._material
 
 
 

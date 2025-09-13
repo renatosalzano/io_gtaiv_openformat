@@ -7,15 +7,16 @@ class ShaderUVMap(ShaderNode):
   def __init__(
     this,
     name: str = None,
-    UV: str = None
+    uv_map: str = None
   ):
+    super().__init__()
     this.name = name
     this.type = 'ShaderNodeUVMap'
 
-    if UV:
-      this.settings['uv_map'] = UV
+    if uv_map:
+      this.settings['uv_map'] = uv_map
 
 
-  def UV(this, link):
+  def _UV(this, link):
     this.material.link((this.node, 'UV'), link)
 

@@ -1,4 +1,4 @@
-
+from typing import Any
 
 class ShaderNode:
 
@@ -6,7 +6,7 @@ class ShaderNode:
     this.name: str = ''
     this.type: str = ''
 
-    this.inputs: list[tuple[str, ShaderNode]] = []
+    this.inputs: list[tuple[str, Any]] = []
     this.settings = {}
     this.material = None
     this.node = None
@@ -21,7 +21,7 @@ class ShaderNode:
       # set to blender node
       setattr(this.node, 'name', this.name)
 
-    for key, value in this.settings:
+    for key, value in this.settings.items():
       setattr(this.node, key, value)
     
     pass

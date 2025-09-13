@@ -87,7 +87,7 @@ class {FILENAME}(ShaderNode):
 
     output_file.write(f'''
     if {_key}:
-      this.inputs.append('{key}', {_key})
+      this.inputs.append(('{key}', {_key}))
 ''')
     
   output_file.write('\n')
@@ -127,7 +127,7 @@ class DATA_OT_debug_material(bpy.types.Operator):
     # write_shader_class("PrincipledBSDF", "Principled", "ShaderNodeBsdfPrincipled")
     # write_shader_class("MaterialOutput", "MaterialOutput", "ShaderNodeOutputMaterial")
     # write_shader_class("ImageTexture", "ImageTexture", "ShaderNodeTexImage")
-    write_shader_class("ShaderUVMap", "ShaderUVMap", "ShaderNodeUVMap")
+    write_shader_class("ShaderInvert", "ShaderInvert", "ShaderNodeInvert")
 
     # material = Material('dev')
 
@@ -161,6 +161,27 @@ class DATA_OT_debug_material(bpy.types.Operator):
     return { 'FINISHED' }
 
 
+class DATA_OT_fast_import(bpy.types.Operator):
+
+  bl_idname = "debug.fastimport"
+  bl_label = "Import Blista"
+  bl_description = "import blista"
+
+  def execute(this, context):
+    from ..import_oft import import_oft
+    from ..utils import path
+    from .. import store
+
+    filepath = 'D:/Modding/IV/io_gtaiv_openformats/example/blista.oft'
+
+    store.filename = path.filename(filepath)
+    store.root_dir = path.dirname(filepath)
+
+    import_oft(filepath=filepath)
+
+    return {'FINISHED'}
+
+
 class VIEW3D_PT_debug_panel(bpy.types.Panel):
 
   bl_space_type = "VIEW_3D"
@@ -173,6 +194,7 @@ class VIEW3D_PT_debug_panel(bpy.types.Panel):
 
     row = this.layout.row()
     row.operator("debug.material", text="debug material")
+    row.operator("debug.fastimport", text="import blista")
     
 
   

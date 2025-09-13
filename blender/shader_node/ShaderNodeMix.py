@@ -26,7 +26,7 @@ class ShaderNodeMix(ShaderNode):
     A: float | vec3 | RGBAf | Euler = None,
     B: float | vec3 | RGBAf | Euler = None,
   ):
-
+    super().__init__()
     this.name = name
     this.type = "ShaderNodeMix"
 
@@ -59,5 +59,5 @@ class ShaderNodeMix(ShaderNode):
   def B(this):
     return (this.node, 'B', 2)
 
-  def Result(this, link):
+  def _Result(this, link):
     this.material.link((this.node, 'Result'), link)

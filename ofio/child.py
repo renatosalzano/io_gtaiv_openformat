@@ -1,8 +1,8 @@
 
-from .. import config
+from .. import store
 from ..utils.parser import Parser, ParserMethods
 from ..utils import string, path
-from .f50 import F50
+from .matrix import Matrix
 from .lodgroup import Lodgroup
 
 
@@ -27,18 +27,18 @@ class Child(ParserMethods):
     this.path = path.normalize(filepath)
     this.pristineMass = 0.0
     this.damagedMass = 0.0
-    this.f50: F50 = None
+    this.f50: Matrix = None
 
     this.fragment: Fragment = Fragment()
 
-    Parser(path.join(config.root_dir, this.path), this.fragment)
+    Parser(path.join(store.root_dir, this.path), this.fragment)
 
     add_child_to_fragments(group_name, this)
     pass
 
 
   def set_f50(this, _):
-    this.f50 = F50()
+    this.f50 = Matrix()
     return this.f50
 
     

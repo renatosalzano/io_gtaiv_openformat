@@ -12,17 +12,18 @@ class ShaderBump(ShaderNode):
     FilterWidth: float = None,
 
   ):
+    super().__init__()
     this.name = name
     this.type = 'ShaderNodeBump'
 
     if Strength:
-      this.inputs.append('Strength', Strength)
+      this.inputs.append(('Strength', Strength))
 
     if Distance:
-      this.inputs.append('Distance', Distance)
+      this.inputs.append(('Distance', Distance))
 
     if FilterWidth:
-      this.inputs.append('Filter Width', FilterWidth)
+      this.inputs.append(('Filter Width', FilterWidth))
 
 
   @property
@@ -46,10 +47,10 @@ class ShaderBump(ShaderNode):
 
 
   @property
-  def InNormal(this):
+  def Normal(this):
     return (this.node, 'Normal', 4)
 
 
-  def OutNormal(this, link):
+  def _Normal(this, link):
     this.material.link((this.node, 'Normal'), link)
 

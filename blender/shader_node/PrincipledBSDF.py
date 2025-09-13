@@ -37,92 +37,93 @@ class PrincipledBSDF(ShaderNode):
     ThinFilmIOR: float = None,
 
   ):
+    super().__init__()
     this.name = name
     this.type = 'ShaderNodeBsdfPrincipled'
 
     if BaseColor:
-      this.inputs.append('Base Color', BaseColor)
+      this.inputs.append(('Base Color', BaseColor))
 
     if Metallic:
-      this.inputs.append('Metallic', Metallic)
+      this.inputs.append(('Metallic', Metallic))
 
     if Roughness:
-      this.inputs.append('Roughness', Roughness)
+      this.inputs.append(('Roughness', Roughness))
 
     if IOR:
-      this.inputs.append('IOR', IOR)
+      this.inputs.append(('IOR', IOR))
 
     if Alpha:
-      this.inputs.append('Alpha', Alpha)
+      this.inputs.append(('Alpha', Alpha))
 
     if Weight:
-      this.inputs.append('Weight', Weight)
+      this.inputs.append(('Weight', Weight))
 
     if DiffuseRoughness:
-      this.inputs.append('Diffuse Roughness', DiffuseRoughness)
+      this.inputs.append(('Diffuse Roughness', DiffuseRoughness))
 
     if SubsurfaceWeight:
-      this.inputs.append('Subsurface Weight', SubsurfaceWeight)
+      this.inputs.append(('Subsurface Weight', SubsurfaceWeight))
 
     if SubsurfaceRadius:
-      this.inputs.append('Subsurface Radius', SubsurfaceRadius)
+      this.inputs.append(('Subsurface Radius', SubsurfaceRadius))
 
     if SubsurfaceScale:
-      this.inputs.append('Subsurface Scale', SubsurfaceScale)
+      this.inputs.append(('Subsurface Scale', SubsurfaceScale))
 
     if SubsurfaceIOR:
-      this.inputs.append('Subsurface IOR', SubsurfaceIOR)
+      this.inputs.append(('Subsurface IOR', SubsurfaceIOR))
 
     if SubsurfaceAnisotropy:
-      this.inputs.append('Subsurface Anisotropy', SubsurfaceAnisotropy)
+      this.inputs.append(('Subsurface Anisotropy', SubsurfaceAnisotropy))
 
     if SpecularIORLevel:
-      this.inputs.append('Specular IOR Level', SpecularIORLevel)
+      this.inputs.append(('Specular IOR Level', SpecularIORLevel))
 
     if SpecularTint:
-      this.inputs.append('Specular Tint', SpecularTint)
+      this.inputs.append(('Specular Tint', SpecularTint))
 
     if Anisotropic:
-      this.inputs.append('Anisotropic', Anisotropic)
+      this.inputs.append(('Anisotropic', Anisotropic))
 
     if AnisotropicRotation:
-      this.inputs.append('Anisotropic Rotation', AnisotropicRotation)
+      this.inputs.append(('Anisotropic Rotation', AnisotropicRotation))
 
     if TransmissionWeight:
-      this.inputs.append('Transmission Weight', TransmissionWeight)
+      this.inputs.append(('Transmission Weight', TransmissionWeight))
 
     if CoatWeight:
-      this.inputs.append('Coat Weight', CoatWeight)
+      this.inputs.append(('Coat Weight', CoatWeight))
 
     if CoatRoughness:
-      this.inputs.append('Coat Roughness', CoatRoughness)
+      this.inputs.append(('Coat Roughness', CoatRoughness))
 
     if CoatIOR:
-      this.inputs.append('Coat IOR', CoatIOR)
+      this.inputs.append(('Coat IOR', CoatIOR))
 
     if CoatTint:
-      this.inputs.append('Coat Tint', CoatTint)
+      this.inputs.append(('Coat Tint', CoatTint))
 
     if SheenWeight:
-      this.inputs.append('Sheen Weight', SheenWeight)
+      this.inputs.append(('Sheen Weight', SheenWeight))
 
     if SheenRoughness:
-      this.inputs.append('Sheen Roughness', SheenRoughness)
+      this.inputs.append(('Sheen Roughness', SheenRoughness))
 
     if SheenTint:
-      this.inputs.append('Sheen Tint', SheenTint)
+      this.inputs.append(('Sheen Tint', SheenTint))
 
     if EmissionColor:
-      this.inputs.append('Emission Color', EmissionColor)
+      this.inputs.append(('Emission Color', EmissionColor))
 
     if EmissionStrength:
-      this.inputs.append('Emission Strength', EmissionStrength)
+      this.inputs.append(('Emission Strength', EmissionStrength))
 
     if ThinFilmThickness:
-      this.inputs.append('Thin Film Thickness', ThinFilmThickness)
+      this.inputs.append(('Thin Film Thickness', ThinFilmThickness))
 
     if ThinFilmIOR:
-      this.inputs.append('Thin Film IOR', ThinFilmIOR)
+      this.inputs.append(('Thin Film IOR', ThinFilmIOR))
 
 
   @property
@@ -280,6 +281,6 @@ class PrincipledBSDF(ShaderNode):
     return (this.node, 'Thin Film IOR', 30)
 
 
-  def BSDF(this, link):
+  def _BSDF(this, link):
     this.material.link((this.node, 'BSDF'), link)
 

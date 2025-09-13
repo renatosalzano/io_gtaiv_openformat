@@ -1,5 +1,5 @@
 
-from .. import config
+from .. import store
 import bpy
 from mathutils import Vector
 from ..utils import file_exist
@@ -83,9 +83,9 @@ def link_node(material, output, input, row = 0):
 
 def texture_path(basename):
   dir_paths = [
-    f'{config.root_dir}/{config.basename}',
-    f'{config.root_dir}/vehshare',
-    f'{config.root_dir}/texture'
+    f'{store.root_dir}/{store.basename}',
+    f'{store.root_dir}/vehshare',
+    f'{store.root_dir}/texture'
   ]
   
   extensions = ['.dds', '.png']
