@@ -139,16 +139,16 @@ gta_vehicle_paint1 = (
 
 
 gta_vehicle_paint2 = (
-  "texture",
-  "diffuse_color",
-  "spec_factor",
-  "spec_color_factor",
-  "spec_map_strenght",
-  "spec2_factor",
-  "spec2_color_strength",
-  "reflective_pow",
-  "dirt_texture",
-  "spec_texture"
+  "texture", # vehicle_generic_smallspecmap
+  "diffuse_color", # 2.00000000;1.00000000;1.00000000
+  "spec_factor", # 180.00000000
+  "spec_color_factor", # 0.15000000
+  "spec_map_strenght", # 1.00000000;0.00000000;0.00000000
+  "spec2_factor", # 40.00000000;0.00000000;0.00000000;0.00000000
+  "spec2_color_strength", # 1.70000000;0.00000000;0.00000000;0.00000000
+  "reflective_pow", # 0.45000000
+  "dirt_texture", # vehicle_genericmud_car
+  "spec_texture" # Vehicle_generic_smallspecmap
 )
 
 gta_vehicle_paint3 = (

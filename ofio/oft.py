@@ -16,7 +16,7 @@ class Oft(ParserMethods):
 
     Parser(filepath, this)
 
-    debug.debug_object(this)
+    # debug.debug_object(this)
 
     pass
 

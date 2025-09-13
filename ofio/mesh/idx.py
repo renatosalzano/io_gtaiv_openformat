@@ -36,5 +36,5 @@ class Idx(ParserMethods):
 
   
   def set_offset(this):
-    this.offset = this.max_idx - 1
+    this.offset = this.max_idx + 1
 

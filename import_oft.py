@@ -28,7 +28,8 @@ def import_model(bone: Bone, parent: Object = None):
       
       context.set_parent(bone_obj, mesh_obj)
       
-      mesh_obj.hide_viewport = False if mesh_obj.name.startswith('L0') else True
+      hide = False if mesh_obj.name.startswith('L0') else True
+      mesh_obj.hide_set(hide)
 
   if bone.haschildrens():
 

@@ -7,11 +7,14 @@ from ...utils import debug
 
 def shader_to_material(shader: Shader):
 
-  material = Material(shader.mtl_name)
+  color = int(shader.diffuse_color.z) if shader.diffuse_color else 1
+
+  if (shader.diffuse_color):
+    print(shader.diffuse_color)
+
+  material = Material(f'{shader.mtl_name}')
 
   MaterialOuput = material.get_output()
-
-  color = int(shader.diffuse_color.x) if shader.diffuse_color else 1
 
   # TODO create COLOR group
   debug.log(f'[shader_to_material] {shader.shader_name}')
@@ -20,41 +23,46 @@ def shader_to_material(shader: Shader):
     case 'gta_vehicle_paint1' | 'gta_vehicle_paint2':
 
       Main = material.add_node(PrincipledBSDF())
+
+      blue = (0.017, 0.120, 0.287, 1.)
+      orange = (0.82, 0.18, 0.0, 1.)
       
       MixColor = material.add_node(ShaderNodeMix(
         Factor=0.1,
-        A=RGBAf(0.2, 0.2, 0.2, 1.),
+        A=blue if color == 2 else orange,
         data_type='RGBA',
         blend_type='ADD'
       ))
 
       MixColor._Result(Main.BaseColor)
 
+      UV1 = material.add_node(ShaderUVMap(
+        uv_map='UV1'
+      ))
+
       MudTexture = material.add_node(ImageTexture(
         image=shader.dirt_texture
       ))
 
-      UV2 = material.add_node(ShaderUVMap(
-        uv_map='UV2'
-      ))
-
       MudTexture._Color(MixColor.B)
-      UV2._UV(MudTexture.Vector)
+      UV1._UV(MudTexture.Vector)
 
 
       NoiseTexture = material.add_node(ImageTexture(
         image=shader.spec_texture
       ))
-
-      UV1 = material.add_node(ShaderUVMap(
-        uv_map='UV1'
+      UV2 = material.add_node(ShaderUVMap(
+        uv_map='UV2'
       ))
+      UV2._UV(NoiseTexture.Vector)
 
-      InvertColor = material.add_node(ShaderInvert())
+
+      InvertColor = material.add_node(ShaderInvert(
+        Fac=1.0 - (shader.reflective_pow or 0.2)
+      ))
 
       InvertColor._Color(Main.Roughness)
       NoiseTexture._Color(InvertColor.Color)
-      UV1._UV(NoiseTexture.Vector)
     
     case 'gta_vehicle_paint3':
 

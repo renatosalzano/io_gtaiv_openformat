@@ -14,6 +14,7 @@ class Mtl(ParserMethods):
   def __init__(this, index: str, skinned: int, chunks: VehChunks):
 
     debug.log(f'[mtl] index: "{index}" skinned: "{skinned}"')
+    this._is_merging = False
 
     this.index: str = index
     this.skinned: int = skinned
@@ -26,24 +27,35 @@ class Mtl(ParserMethods):
 
   def set_prim(this, integer):
 
+    if this._is_merging:
+      return this
+
     this.Prim = int(integer)
     return this
   
 
   def set_idx(this, idx_count):
     # breakpoint()
+    if this._is_merging:
+      return this.idx
+    
     this.idx = Idx(int(idx_count))
     return this.idx
   
 
   def set_verts(this, verts_count):
+
+    if this._is_merging:
+      return this.verts
     
     this.verts = Verts(int(verts_count), this.skinned)
     return this.verts
 
 
   def merge(this):
+    this._is_merging = True
     this.idx.set_offset()
+    debug.log(f'[mtl] merge offset: {this.idx.offset}')
 
 
   def to_mesh(this):

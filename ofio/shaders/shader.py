@@ -105,7 +105,8 @@ class Shader:
           debug.log(f'[shader] optional "{key}" is not present')
           continue
 
-      match (type(type_value)):
+
+      match type(type_value):
         case builtins.tuple:
           data = value.split(';')
           parsed_value = []
@@ -127,6 +128,11 @@ class Shader:
 
             for i in range(len(type_value)):
               parsed_value.append(float(data[i]))
+
+            if len(parsed_value) == 4:
+              parsed_value = vec4(*parsed_value)
+            else:
+              parsed_value = vec3(*parsed_value)
             pass
 
           setattr(this, key, parsed_value)
@@ -136,7 +142,7 @@ class Shader:
           setattr(this, key, value)
 
         case _:
-          debug.log('[shader] - unknown "{key}"')
+          debug.log(f'[shader] "{key}": unknown {type(type_value)}')
 
       index += 1
       

@@ -23,5 +23,9 @@ class ShaderNode:
 
     for key, value in this.settings.items():
       setattr(this.node, key, value)
+
+    for key, value in this.inputs:
+      # set default value
+      this.node.inputs[key].default_value = value
     
     pass

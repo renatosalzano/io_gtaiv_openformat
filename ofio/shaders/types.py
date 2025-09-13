@@ -2,8 +2,8 @@ from ...utils import debug
 from typing import NewType
 from ..types import vec3, vec4
 
-Vec3 = vec3(0.0, 0.0, 0.0)
-Vec4 = vec4(0.0, 0.0, 0.0, 0.0)
+Vec3 = (0.0, 0.0, 0.0)
+Vec4 = (0.0, 0.0, 0.0, 0.0)
 dimmerset = (Vec4, Vec4, Vec4, Vec4, Vec4, Vec4, Vec4, Vec4, Vec4, Vec4, Vec4, Vec4, Vec4, Vec4, Vec4)
 
 dimmerset_vec4 = NewType('dimmerset_vec4', tuple[vec4, vec4, vec4, vec4, vec4, vec4, vec4, vec4, vec4, vec4, vec4, vec4, vec4, vec4, vec4])

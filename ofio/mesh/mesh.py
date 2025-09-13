@@ -36,6 +36,7 @@ class Mesh(ParserMethods):
     if curr_mtl is not None and curr_mtl.index == index:
       debug.log(f'[mesh] merge Mtl {index}')
       curr_mtl.merge()
+      return curr_mtl
     else:
       debug.log(f'[mesh] add Mtl {index}')
       this.mtl.append(Mtl(index, this.Skinned, this.chunks))
@@ -68,7 +69,9 @@ class Mesh(ParserMethods):
 
       for mtl_index, idx in chunk.idx.items():
 
-        tmp_mesh = mtl_mesh[mtl_index].copy()
+        tmp_mesh = mesh.Mesh(f'TMP_MESH_{this.lod}_{bone_name}')
+        tmp_mesh._mesh = mtl_mesh[mtl_index]._mesh.copy()
+
         bmesh = tmp_mesh.to_bmesh()
 
         wrong_count = 0
@@ -98,10 +101,10 @@ class Mesh(ParserMethods):
       
       this.objects[bone_name] = mesh.join(mesh_to_join, f'{this.lod}_{bone_name}')
 
-    for tmp_mesh in mtl_mesh.values():
+    # for tmp_mesh in mtl_mesh.values():
       
-      if tmp_mesh._object:
-        store.main_collection.objects.unlink(tmp_mesh._object)
+    #   if tmp_mesh._object:
+    #     store.main_collection.objects.unlink(tmp_mesh._object)
     
     pass
 
