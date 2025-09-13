@@ -34,7 +34,7 @@ class Bone(ParserMethods):
     this._add_bone = _add_bone
 
 
-  def set_children(this, count: int):
+  def set_Children(this, count: int):
     # this.Children = count
     return this
   

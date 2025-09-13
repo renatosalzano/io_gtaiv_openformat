@@ -9,9 +9,6 @@ def shader_to_material(shader: Shader):
 
   color = int(shader.diffuse_color.z) if shader.diffuse_color else 1
 
-  if (shader.diffuse_color):
-    print(shader.diffuse_color)
-
   material = Material(f'{shader.mtl_name}')
 
   MaterialOuput = material.get_output()

@@ -32,11 +32,13 @@ class Oft(ParserMethods):
 class F8(ParserMethods):
 
   def __init__(this):
+    this._is_array_block = True
     this._set_block = True
     pass
 
   def set_block(this, key, value):
     setattr(this, key, Matrix())
+    return getattr(this, key)
 
 
 

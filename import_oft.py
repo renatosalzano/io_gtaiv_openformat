@@ -74,27 +74,27 @@ def import_oft(filepath = ""):
 
   oft = Oft(filepath)
 
-  stopwatch.time(f'imported data')
+  # stopwatch.time(f'imported data')
 
-  oft.import_materials()
+  # oft.import_materials()
 
-  stopwatch.time(f'imported materials')
+  # stopwatch.time(f'imported materials')
 
-  lods = oft.drawable.lodgroup.get_lods()
+  # lods = oft.drawable.lodgroup.get_lods()
 
-  for lod, filepaths in lods.items():
-    for filepath in filepaths:
-      debug.log(f'import {lod}.mesh "{filepath}"')
-      lod_mesh.append(Mesh(filepath))
+  # for lod, filepaths in lods.items():
+  #   for filepath in filepaths:
+  #     debug.log(f'import {lod}.mesh "{filepath}"')
+  #     lod_mesh.append(Mesh(filepath))
 
-  stopwatch.time(f'created mesh')
+  # stopwatch.time(f'created mesh')
 
-  context.select_collection(store.filename)
+  # context.select_collection(store.filename)
 
-  for bone in oft.drawable.skel.bone.values():
-    import_model(bone)
+  # for bone in oft.drawable.skel.bone.values():
+  #   import_model(bone)
 
-  stopwatch.stop()
+  # stopwatch.stop()
 
-  context.clean_unused()
-  pass
+  # context.clean_unused()
+  # pass

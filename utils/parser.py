@@ -83,9 +83,10 @@ class ParserMethods:
           value = int(value)
           pass
         case builtins.str:
-          value = " ".join(value)
+          pass
       
       setattr(this, key, value)
+      debug.log(f'[parser] setted "{key}": {value}')
     else:
       debug.log(f'[parser] cannot set property: "{key}" in {this.__class__.__name__}')
 
@@ -126,10 +127,10 @@ class Parser:
   
   def parse(this, ctor: ParserMethods):
 
-    path = ''
+    # path = ''
 
-    init_blocks = False
-    root_block: ParserMethods = ctor
+    # init_blocks = False
+    # root_block: ParserMethods = ctor
     curr_block: ParserMethods | None = ctor
     ref = [ctor]
 
@@ -144,7 +145,7 @@ class Parser:
         type, value = this.start_block()
 
         if this.set_block(curr_block):
-
+          debug.log(f'[parser] SET BLOCK "{curr_block.get_name()}"')
           curr_block = curr_block.set_block(type, value)
           ref.append(curr_block)
           continue
@@ -171,17 +172,6 @@ class Parser:
 
         if isinstance(curr_block, list):
           breakpoint()
-        
-        # get nested block
-        # if has_setter(curr_block, type):
-        #   set_block: Callable[[str], ParserMethods] = get_setter(curr_block, type)
-        #   curr_block = set_block(value)
-        # else:
-
-        #   if hasattr(curr_block, type):
-        #     curr_block = getattr(curr_block, type)
-        #   else:
-        #     debug.log(f'[parser] BLOCK "{type}" is not defined')
 
         if isinstance(curr_block, object):
           ref.append(curr_block)
@@ -233,7 +223,7 @@ class Parser:
     if len(rest) > 0:
       value = rest[0]
 
-    return type.lower(), value
+    return type, value
   
 
   def set_block(this, curr_block):

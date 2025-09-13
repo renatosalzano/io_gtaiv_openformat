@@ -4,6 +4,8 @@ from ..utils.parser import Parser, ParserMethods
 from ..utils import string, path
 from .matrix import Matrix
 from .lodgroup import Lodgroup
+from .bound.bound import Bound
+from .bound.boundTransform import BoundTransform
 
 
 class Drawable(ParserMethods):
@@ -14,10 +16,12 @@ class Drawable(ParserMethods):
 
 class Fragment(ParserMethods):
 
-  def __init__(this):
+  def __init__(this, filepath: str):
     this.drawable = Drawable()
-    this.boundTransform = None
-    this.bound = None
+    this.boundTransform = BoundTransform()
+    this.bound = Bound()
+
+    Parser(path.join(store.root_dir, filepath), this)
 
 
 
@@ -29,9 +33,9 @@ class Child(ParserMethods):
     this.damagedMass = 0.0
     this.f50: Matrix = None
 
-    this.fragment: Fragment = Fragment()
+    this.fragment: Fragment = Fragment(this.path)
 
-    Parser(path.join(store.root_dir, this.path), this.fragment)
+    
 
     add_child_to_fragments(group_name, this)
     pass
