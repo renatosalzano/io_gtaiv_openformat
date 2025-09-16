@@ -1,7 +1,7 @@
 from ... import store
 from ...utils.parser import ParserMethods
 from ...utils import string
-from ..types import  vec3, vec2, RGBAf
+from ..types import  vec3, vec2, vec4, RGBAf
 
 class Verts(ParserMethods):
 
@@ -16,14 +16,12 @@ class Verts(ParserMethods):
 
   def set(this, _k, _v, vertex_declaration):
 
-    # breakpoint()
-
     if this._skinned == 1:
 
       coord, normal, bone_weights, bone_indexes, color, tangent, uv_1, uv_2 = vertex_declaration
 
       coord = to_vec3(coord)
-      color = to_RGBAf(color)
+      color = to_vec4(color)
 
       uv_1 = to_vec2(uv_1)
       uv_2 = to_vec2(uv_2)
@@ -31,10 +29,36 @@ class Verts(ParserMethods):
       bone_index = get_bone_index(bone_indexes)
 
       this.vertices.append(coord)
-      this.vert_declaration.append(SkinnedVert(coord, color, uv_1, uv_2, bone_index))
+      this.vert_declaration.append(
+        SkinnedVert(coord, color, uv_1, uv_2, bone_index)
+      )
     else:
-      # TODO wheelmesh
-      coord, normal, color, tangents, uv_1, *_ = vertex_declaration
+      # X X X / X X X / X X X / X X X X / X X / X X / 0.0 0.0 / 0.0 0.0 / 0.0 0.0 / 0.0 0.0
+      coord, normal, color, tangents, uv_0, uv_1, uv_2, uv_3, uv_4, uv_5 = vertex_declaration
+
+      coord = to_vec3(coord)
+      color = to_vec4(color)
+
+      uv_0 = to_vec2(uv_0)
+      uv_1 = to_vec2(uv_1)
+      uv_2 = to_vec2(uv_2)
+      uv_3 = to_vec2(uv_3)
+      uv_4 = to_vec2(uv_4)
+      uv_5 = to_vec2(uv_5)
+
+      this.vertices.append(coord)
+      this.vert_declaration.append(
+        Vert(
+          coord,
+          color,
+          uv_0,
+          uv_1,
+          uv_2,
+          uv_3,
+          uv_4,
+          uv_5
+        )
+      )
       pass
 
 
@@ -46,7 +70,15 @@ class Verts(ParserMethods):
 
 class SkinnedVert:
 
-  def __init__(this, coord: vec3, color: RGBAf, uv_1: vec2, uv_2: vec2, bone_index: int):
+  def __init__(
+      this, 
+      coord: vec3, 
+      color: vec4, 
+      uv_1: vec2, 
+      uv_2: vec2, 
+      bone_index: int
+    ):
+
     this.coord = coord
     this.color = color
     this.uv_1 = uv_1
@@ -57,11 +89,32 @@ class SkinnedVert:
 
 class Vert:
 
-  def __init__(this, color: RGBAf, uv_1: vec2):
+  def __init__(
+      this, 
+      coord: vec3,
+      color: vec4,
+      uv_0: vec2,
+      uv_1: vec2, 
+      uv_2: vec2, 
+      uv_3: vec2, 
+      uv_4: vec2, 
+      uv_5: vec2
+    ):
+    
+    this.coord = coord
     this.color = color
+    this.uv_0 = uv_0
     this.uv_1 = uv_1
-    # TODO
+    this.uv_2 = uv_2
+    this.uv_3 = uv_3
+    this.uv_4 = uv_4
+    this.uv_5 = uv_5
     pass
+
+
+def to_vec4(value: str) -> vec3:
+  x, y, z, w = string.float_map(value)
+  return vec4(x, y, z, w)
 
 
 def to_vec3(value: str) -> vec3:

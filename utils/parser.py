@@ -5,6 +5,8 @@ from . import debug
 from .string import is_int, to_float, is_float
 from . import path
 
+from ..ofio.types import to_vector
+
 from typing import NewType, Literal, Callable
 
 Types = Literal['oft', 'mesh', 'child', 'skel']
@@ -66,16 +68,23 @@ class ParserMethods:
       if isinstance(v, ParserMethods):
         debug.log(f'[parser] cannot set "{key}" because is block')
         return
+      
 
       match type(v):
 
         case builtins.tuple:
+
           match type(v[0]):
             # case builtins.str:
             #   value = value
-            case builtins.int | builtins.float:
+            case builtins.float:
               value = tuple(map(to_float, value))
+              value = to_vector(value)
+            case builtins.int:
+              value = tuple(map(int, value))
+              value = to_vector(value)
           pass
+        
         case builtins.float:
           value = float(value)
           pass

@@ -1,28 +1,33 @@
 
 from .. import store
 from ..utils.parser import Parser, ParserMethods
-from ..utils import string, path
+from ..utils import debug, path
 from .matrix import Matrix
 from .lodgroup import Lodgroup
 from .bound.bound import Bound
 from .bound.boundTransform import BoundTransform
 
+from .mesh.mesh import Mesh
+
 
 class Drawable(ParserMethods):
 
   def __init__(this):
-    this.lodgroup = Lodgroup()
+    this.lodgroup = Lodgroup(child_lodgroup=True)
+
   
 
 class Fragment(ParserMethods):
 
   def __init__(this, filepath: str):
+
+    bound_name = path.filename(filepath)
+    
     this.drawable = Drawable()
     this.boundTransform = BoundTransform()
-    this.bound = Bound()
+    this.bound = Bound(bound_name)
 
     Parser(path.join(store.root_dir, filepath), this)
-
 
 
 class Child(ParserMethods):
@@ -35,8 +40,6 @@ class Child(ParserMethods):
 
     this.fragment: Fragment = Fragment(this.path)
 
-    
-
     add_child_to_fragments(group_name, this)
     pass
 
@@ -44,5 +47,14 @@ class Child(ParserMethods):
   def set_f50(this, _):
     this.f50 = Matrix()
     return this.f50
+  
+
+  def build_bound(this):
+    bound = this.fragment.bound.build()
+    return bound
+
+
+  def build_mesh(this):
+    return this.fragment.drawable.lodgroup.build_mesh()
 
     

@@ -2,22 +2,21 @@ from .. import store
 from .shaders.shader import Shader
 from .shaders.shader_to_material import shader_to_material
 from ..utils.parser import ParserMethods
+from ..utils import debug
 
 
 class Shadinggroup(ParserMethods):
 
   def __init__(this):
-    this.shaders = Shaders()
-    pass
 
-  def set_Shaders(this, value):
-    print(value)
-    pass
+    debug.log(f'[shaders] init')
 
+    this.Shaders = Shaders()
+  
 
   def import_materials(this):
 
-    for shader in this.shaders.get_shaders().values():
+    for shader in this.Shaders.values():
 
       if isinstance(shader, Shader):
         material = shader_to_material(shader)
@@ -36,6 +35,7 @@ class Shaders(ParserMethods):
     shader = Shader(this._mtl_index, item)
 
     setattr(this, shader.mtl_name, shader)
+    debug.log(f'[shaders] add shader: "{shader.shader_name}"')
     
     this._mtl_index += 1
 
@@ -46,6 +46,14 @@ class Shaders(ParserMethods):
     res: dict[str, Shader] = this.__dict__
 
     return res
+  
+
+  def items(this):
+    return this.__dict__.items()
+  
+
+  def values(this):
+    return this.__dict__.values()
 
 
   def to_JSON(this):

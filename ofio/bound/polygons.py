@@ -13,6 +13,10 @@ class Polygons(ParserMethods):
     debug.log(f'[Polygons] {key} {value}')
     this.polygons.append(Polygon())
     return this.polygons[-1]
+  
+
+  def get_polygon(this, index: int):
+    return this.polygons[index]
 
 
 

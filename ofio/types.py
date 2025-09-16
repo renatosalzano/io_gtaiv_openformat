@@ -7,6 +7,16 @@ class vec4:
     this.w = w
 
 
+  @property
+  def xyzw(this):
+    return (this.x, this.y, this.z, this.w)
+  
+
+  @property
+  def xyz(this):
+    return (this.x, this.y, this.z)
+
+
   def __getitem__(this, index):
     if index == 0:
       return this.x
@@ -155,21 +165,16 @@ class RGBAf:
     return (this.r, this.g, this.b, this.a)
   
 
+def to_vector(value: list):
+  vector_len = len(value)
 
-
-
-    
-    
- 
-
-
-
-
-
-      
-
-
+  if isinstance(value[0], int) and vector_len == 3:
+    return vec3int(*value)
   
-
-  
-
+  match vector_len:
+    case 4:
+      return vec4(*value)
+    case 3:
+      return vec3(*value)
+    case _:
+      return value

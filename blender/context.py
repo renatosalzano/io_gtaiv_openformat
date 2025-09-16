@@ -76,7 +76,15 @@ def create_empty(name: str, location: list[float]):
   return empty_object
 
 
-def shade_smooth():
+def shade_smooth(object: Object = None):
+
+  deselect_all()
+
+  if object:
+    set_active(object)
+    bpy.ops.object.shade_smooth()
+    return
+
   select_all()
   bpy.ops.object.shade_smooth()
   deselect_all()

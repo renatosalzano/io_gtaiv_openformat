@@ -6,10 +6,56 @@ from .ofio.mesh.mesh import Mesh
 from .utils import path, debug, log
 from .blender import context
 from bpy.types import Object
-from . import store
+from . import store, config
 
 oft: Oft = None
 lod_mesh: list[Mesh] = []
+tmp_object: dict[str, Object] = {}
+
+
+
+def import_mesh(bone_name: str, parent_object: Object):
+
+  for Mesh in lod_mesh:
+    
+    if Mesh.has_object(bone_name):
+
+      mesh_obj = Mesh.get_object(bone_name)
+      
+      context.set_parent(parent_object, mesh_obj)
+      
+      hide = False if mesh_obj.name.startswith('L0') else True
+
+      mesh_obj.hide_set(hide)
+
+
+def import_child(bone_name: str, parent_object: Object):
+
+  child = oft.get_child(bone_name)
+
+  if child:
+    is_wheel = bone_name.startswith('wheel')
+
+    if is_wheel:
+      index = bone_name.split('_')[1] # wheel_lf
+      wheelname = f'wheelmesh_{index}'
+
+    child_lod_mesh = child.build_mesh()
+
+    for child_mesh in child_lod_mesh:
+
+      for mesh_name, mesh_object in child_mesh.objects.items():
+
+        if child_mesh.Lod > 0:
+          wheelname = f'{wheelname}_l{child_mesh.Lod}'
+
+        if is_wheel:
+          tmp_object[wheelname] = mesh_object
+
+
+    child_bound = child.build_bound()
+
+
 
 
 def import_model(bone: Bone, parent: Object = None):
@@ -20,16 +66,19 @@ def import_model(bone: Bone, parent: Object = None):
 
   bone_obj = context.create_empty(bone.name, origin)
 
-  for Mesh in lod_mesh:
-    
-    if Mesh.has_object(bone.name):
+  if config.IMPORT_MESH:
+    import_mesh(bone.name, bone_obj)
 
-      mesh_obj = Mesh.get_object(bone.name)
-      
-      context.set_parent(bone_obj, mesh_obj)
-      
-      hide = False if mesh_obj.name.startswith('L0') else True
-      mesh_obj.hide_set(hide)
+  import_child(bone.name, bone_obj)
+  
+  if bone.name in tmp_object:
+
+    if bone.name.startswith('wheel'):
+      tmp_object[bone.name].location = origin
+      # context.shade_smooth(tmp_object[bone.name])
+
+
+    context.set_parent(bone_obj, tmp_object[bone.name])
 
   if bone.haschildrens():
 
@@ -41,6 +90,10 @@ def import_model(bone: Bone, parent: Object = None):
     context.set_parent(parent, bone_obj)
 
 
+def build_mesh():
+
+  for mesh in oft.drawable.lodgroup.build_mesh('vehicle'):
+    lod_mesh.append(mesh)
 
 
 def import_oft(filepath = ""):
@@ -72,29 +125,26 @@ def import_oft(filepath = ""):
 
   debug.log(f'import model at "{filepath}"')
 
+  global oft
   oft = Oft(filepath)
 
-  # stopwatch.time(f'imported data')
+  stopwatch.time(f'imported data')
 
-  # oft.import_materials()
+  oft.import_materials()
+  print(f'materials count: {len(store.materials)}')
 
-  # stopwatch.time(f'imported materials')
+  stopwatch.time(f'imported materials')
 
-  # lods = oft.drawable.lodgroup.get_lods()
+  if config.IMPORT_MESH:
+    build_mesh()
+    stopwatch.time(f'build mesh')
 
-  # for lod, filepaths in lods.items():
-  #   for filepath in filepaths:
-  #     debug.log(f'import {lod}.mesh "{filepath}"')
-  #     lod_mesh.append(Mesh(filepath))
+  context.select_collection(store.filename)
 
-  # stopwatch.time(f'created mesh')
+  for bone in oft.drawable.skel.bone.values():
+    import_model(bone)
 
-  # context.select_collection(store.filename)
+  stopwatch.stop()
 
-  # for bone in oft.drawable.skel.bone.values():
-  #   import_model(bone)
-
-  # stopwatch.stop()
-
-  # context.clean_unused()
-  # pass
+  context.clean_unused()
+  pass

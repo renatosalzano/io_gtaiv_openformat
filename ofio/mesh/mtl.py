@@ -8,10 +8,12 @@ from .idx import Idx
 from .verts import Verts
 from .veh_chunks import VehChunks
 
+from .types import MeshType
+
 class Mtl(ParserMethods):
   '''Multimaterial mesh'''
 
-  def __init__(this, index: str, skinned: int, chunks: VehChunks):
+  def __init__(this, index: str, skinned: int, chunks: VehChunks, type: MeshType):
 
     debug.log(f'[mtl] index: "{index}" skinned: "{skinned}"')
     this._is_merging = False
@@ -24,8 +26,9 @@ class Mtl(ParserMethods):
     this.idx: Idx = None
     this.verts: Verts = None
     this.chunks: VehChunks = chunks
+    this.type: MeshType = type
 
-  def set_prim(this, integer):
+  def set_Prim(this, integer):
 
     if this._is_merging:
       return this
@@ -34,7 +37,7 @@ class Mtl(ParserMethods):
     return this
   
 
-  def set_idx(this, idx_count):
+  def set_Idx(this, idx_count):
     # breakpoint()
     if this._is_merging:
       return this.idx
@@ -43,7 +46,7 @@ class Mtl(ParserMethods):
     return this.idx
   
 
-  def set_verts(this, verts_count):
+  def set_Verts(this, verts_count):
 
     if this._is_merging:
       return this.verts
@@ -63,27 +66,40 @@ class Mtl(ParserMethods):
     mesh = Mesh(f'TMP_MESH_MTL_{this.index}', this.verts.vertices, this.idx.faces)
     bmesh = mesh.to_bmesh()
 
-    uv_1 = bmesh.loops.layers.uv.new("UV1")
+    if this.skinned == 1:
+      uv_1 = bmesh.loops.layers.uv.new("UV1")
 
-    if store.is_vehicle:
-      uv_2 = bmesh.loops.layers.uv.new("UV2")
+      if this.type == 'vehicle':
+        uv_2 = bmesh.loops.layers.uv.new("UV2")
 
-    ao = bmesh.loops.layers.color.new("ao")
+      ao = bmesh.loops.layers.color.new("ao")
 
-    for face in bmesh.faces:
-      for loop in face.loops:
+      for face in bmesh.faces:
+        for loop in face.loops:
 
-        index = loop.vert.index
-        vert = this.verts.get_vert_declaration(index)
+          index = loop.vert.index
+          vert = this.verts.get_vert_declaration(index)
 
-        loop[uv_1].uv = vert.uv_1
-        loop[ao] = vert.color.rgba
+          loop[ao] = vert.color.xyzw
+          loop[uv_1].uv = vert.uv_1
 
-        if store.is_vehicle:
-          loop[uv_2].uv = vert.uv_2
+          if this.type == 'vehicle':
+            loop[uv_2].uv = vert.uv_2
+            this.chunks.set(vert.bone_name, this.index, loop.vert.index)
+    else:
+      # MEMO: non skinned have 6 uv
+      uv_1 = bmesh.loops.layers.uv.new("UV1")
+      ao = bmesh.loops.layers.color.new("ao")
 
-          this.chunks.set(vert.bone_name, this.index, loop.vert.index)
-          # self.chunks[chunk_index].set(mtl_index, loop.vert.index)
+      for face in bmesh.faces:
+        for loop in face.loops:
+
+          index = loop.vert.index
+          vert = this.verts.get_vert_declaration(index)
+
+          loop[ao] = vert.color.xyzw
+          loop[uv_1].uv = vert.uv_0
+
 
     mesh.commit_bmesh()
     

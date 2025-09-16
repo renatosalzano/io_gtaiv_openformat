@@ -25,6 +25,23 @@ class Mesh:
       this.mesh_from_pydata(vertices, faces)
   
 
+  def to_sphere(this, radius = 1.0):
+
+    _bmesh = bmesh.new()
+    bmesh.ops.create_uvsphere(
+      _bmesh, 
+      u_segments=8, 
+      v_segments=9,
+      radius=radius
+    )
+
+    _bmesh.to_mesh(this._mesh)
+    
+    this._mesh.update()
+
+    _bmesh.free()
+
+
   def mesh_from_pydata(this, vertices = [], faces = []):
     this._mesh.from_pydata(vertices, [], faces)
     return this._mesh
@@ -90,6 +107,10 @@ class Mesh:
       bpy.context.collection.objects.unlink(this._object)
 
 
+  def set_name(this, name: str):
+    this._name = name
+
+
 class Bmesh:
 
   def __init__(this):
@@ -122,10 +143,6 @@ def join(meshes: list[Object], rename: str = None) -> Object:
 
   context.deselect_all()
 
-  if len(meshes) == 1:
-    return meshes[0]
-  
-
   result = meshes[0]
 
   if rename:
@@ -133,10 +150,12 @@ def join(meshes: list[Object], rename: str = None) -> Object:
   
   context.set_active(result)
 
-  for object in meshes:
-    object.select_set(state=True)
+  if len(meshes) > 1:
 
-  context.join()
+    for object in meshes:
+      object.select_set(state=True)
+
+    context.join()
   
   bpy.ops.object.shade_smooth()
 
@@ -144,3 +163,21 @@ def join(meshes: list[Object], rename: str = None) -> Object:
 
   return result
 
+
+def merge_by_distance(mesh_obj: Object):
+  
+  bpy.context.view_layer.objects.active = mesh_obj
+  
+  merge_threshold = 0.001
+
+  # Get into edit mode (vertices can only be accessed in edit mode)
+  bpy.ops.object.mode_set(mode='EDIT')
+
+  # Select all vertices
+  bpy.ops.mesh.select_all(action='SELECT')
+
+  # Merge vertices by distance
+  bpy.ops.mesh.remove_doubles(threshold=merge_threshold)
+
+  # Get back into object mode
+  bpy.ops.object.mode_set(mode='OBJECT')

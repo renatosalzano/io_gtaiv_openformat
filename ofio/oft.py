@@ -29,6 +29,10 @@ class Oft(ParserMethods):
     this.drawable.shadinggroup.import_materials()
 
 
+  def get_child(this, bone_name: str):
+    return this.fragments.get_child(bone_name)
+
+
 class F8(ParserMethods):
 
   def __init__(this):

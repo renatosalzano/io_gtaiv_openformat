@@ -38,4 +38,7 @@ class Fragments(ParserMethods):
 
 
   def get_child(this, key: str):
-    return this._child[key]
+    
+    if key in this._child:
+      return this._child[key]
+    return None
