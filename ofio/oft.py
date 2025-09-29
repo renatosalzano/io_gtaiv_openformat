@@ -29,8 +29,19 @@ class Oft(ParserMethods):
     this.drawable.shadinggroup.import_materials()
 
 
+  def get_bone_by_name(this, bone_name: str):
+    debug.log(f'[oft] get bone by name "{bone_name}"')
+    return this.drawable.skel.get_bone_by_name(bone_name)
+
+
   def get_child(this, bone_name: str):
+    debug.log(f'[oft] get child "{bone_name}"')
     return this.fragments.get_child(bone_name)
+  
+
+  def get_f8(this, index: str) -> Matrix | None:
+
+    return getattr(this.f8, index)
 
 
 class F8(ParserMethods):

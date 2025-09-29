@@ -55,23 +55,32 @@ def join():
   bpy.ops.object.join()
 
 
-def set_parent(_from: Object, to: Object):
+def set_parent(parent: Object, child: Object, keep_transform = False):
   
-  if not isinstance(to, Object):
+  if not isinstance(child, Object):
     return
 
   deselect_all()
-  set_active(_from)
-  to.select_set(state=True)
+
+  set_active(parent)
+  child.select_set(state=True)
   
-  bpy.ops.object.parent_set(type='OBJECT')
+  bpy.ops.object.parent_set(type='OBJECT', keep_transform=keep_transform)
 
 
-def create_empty(name: str, location: list[float]):
+def create_empty(name: str, location: list[float], collection: Collection = None):
+
+  if collection:
+    select_collection(collection.name)
+
   bpy.ops.object.empty_add(type='SINGLE_ARROW', location=location)
   empty_object = bpy.context.object
   empty_object.name = name
   empty_object.empty_display_size = 0.1
+  empty_object.show_in_front = True
+
+  # if collection:
+  #   collection.objects.link(empty_object)
 
   return empty_object
 

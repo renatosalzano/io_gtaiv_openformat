@@ -3,8 +3,14 @@
 from ...utils.parser import ParserMethods
 from .polygons import Polygons, Polygon
 from .curved_edges import CurvedEdges
-from ...blender import mesh
-from ..types import vec3, vec3int
+from ...blender import mesh, material
+from ...blender.shader_node.shaders import ShaderDiffuseBSDF
+from ..types import vec4, vec3, vec3int
+from .bound_mtl import bound_mtl
+from mathutils import Matrix
+from ...utils import debug
+
+from ..child_struct import ChildStruct
 
 class ListVec3Int(ParserMethods):
 
@@ -57,25 +63,68 @@ class Bound(ParserMethods):
     this.CapsuleHeight = 0.0
 
     this._name = bound_name
+    this._bound_chunks: dict[str, BoundChunk] = {}
     this._idx = []
     this._vertices = []
+    this._materials: list[material.Material] = []
     this._material_index = []
     this._polygon_parsed = [0]
 
 
   
-  def build(this):
+  def build(this, child: ChildStruct):
+
+    debug.log(f'[buond] build {this._name} - {this.Type}')
+
     match this.Type:
 
       case "BoundGeometry":
         this.parse_polygons(this.Polygons.get_polygon(0))
         this.parse_vertices()
 
-        return mesh.Mesh(
-          name=f'COL_{this._name}', 
-          faces=this._idx, 
-          vertices=this._vertices
-        )
+        mesh_to_join: list[mesh.Mesh] = []
+
+        for chunk in this._bound_chunks.values():
+
+          tmp_mesh = mesh.Mesh(
+            name=f'TMP_COL_{this._name}_MAT_{chunk.material_index}', 
+            faces=chunk.idx,
+            vertices=this._vertices
+          )
+
+          bound_material = chunk.build_material(this.Materials)
+
+          tmp_mesh.append_material(bound_material)
+          tmp_object = tmp_mesh.to_object()
+
+          mesh_to_join.append(tmp_object)
+
+        bound_object = mesh.join(mesh_to_join, f'_COL_{this._name}')
+
+        x, y, z = this.VertexOffset.xyz
+
+        bound_object.location = (x, y, z)
+
+        debug.log(f'[bound] child_transform = {child._transform}')
+
+        bound_object.location = child._transform @ bound_object.location
+
+        # parent_matrix = Matrix()
+
+        # if child._parent:
+        #   parent_matrix = child._parent.f50.get_matrix().inverted()
+
+        # transform_matrix = child.f50.get_matrix().inverted() * parent_matrix
+
+        # print(this._name, child._transform)
+
+        # world_offset = bound_object.matrix_world * child._transform
+
+        # bound_object.location = world_offset @ bound_object.location
+
+        this.set_properties(bound_object)
+
+        return bound_object
       
       case "BoundCurvedGeometry":
         vert = this.Vertices.get_vert(1)
@@ -85,9 +134,14 @@ class Bound(ParserMethods):
         if rad < 0:
           rad *= -1
 
-        sphere_mesh = mesh.Mesh(this._name)
+        sphere_mesh = mesh.Mesh(f'_COL_{this._name}')
         sphere_mesh.to_sphere(radius=rad)
-        return sphere_mesh
+
+        bound_object = sphere_mesh.to_object()
+
+        this.set_properties(bound_object)
+
+        return bound_object
       case _:
         return None
 
@@ -101,8 +155,15 @@ class Bound(ParserMethods):
       # faces have 3 vertices connected
       vertices.pop()
 
-    this._idx.append(tuple(vertices))
-    this._material_index.append(polygon.Material)
+    key = f'{polygon.Material}'
+
+    if not key in this._bound_chunks:
+      this._bound_chunks[key] = BoundChunk(polygon.Material)
+
+    this._bound_chunks[key].idx.append(tuple(vertices))
+
+    # this._idx.append(tuple(vertices))
+    # this._material_index.append(polygon.Material)
 
     for sibling_polygon in polygon.Siblings:
 
@@ -126,7 +187,7 @@ class Bound(ParserMethods):
 
       for i in range(3):
         vert[i] *= scale[i]
-        vert[i] += offset[i]
+        # vert[i] += offset[i]
 
       vert.x *= -1
       vert.y *= -1
@@ -134,3 +195,47 @@ class Bound(ParserMethods):
       this._vertices.append(vert)
 
 
+  def set_properties(this, object: mesh.Object):
+    
+    object['Type'] = this.Type
+    object['CentroidPresent'] = this.CentroidPresent
+    object['CGPresent'] = this.CGPresent
+    object['Radius'] = this.Radius
+    object['WorldRadius'] = this.WorldRadius
+    object['AABBMax'] = this.AABBMax
+    object['AABBMin'] = this.AABBMin
+    object['Centroid'] = this.Centroid
+    object['CenterOfMass'] = this.CenterOfMass
+    object['Margin'] = this.Margin
+    # object['VertexScale'] = this.VertexScale
+    # object['VertexOffset'] = this.VertexOffset
+
+
+class BoundChunk:
+
+  def __init__(this, material_index: int):
+    this.idx: list[int] = []
+    this.material_index: int = material_index
+    pass
+
+
+  def build_material(this, bound_materials: ListVec3Int):
+
+    bound_material_index = bound_materials.get()[this.material_index][0]
+
+    mtl = bound_mtl[bound_material_index]
+    r, g, b = mtl.bound_color
+
+    mat = material.Material(mtl.bound_name)
+    mat_output = mat.get_output()
+
+    diffuse_color = mat.add_node(
+      ShaderDiffuseBSDF(
+        Color=(r, g, b, 1.0),
+        Roughness=1.0
+      )
+    )
+
+    diffuse_color._BSDF(mat_output.Surface)
+
+    return mat

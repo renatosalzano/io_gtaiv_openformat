@@ -1,5 +1,5 @@
 from ...utils.parser import ParserMethods
-from ..matrix import Matrix
+from mathutils import Matrix
 
 class BoundTransform(ParserMethods):
 
@@ -15,3 +15,15 @@ class BoundTransform(ParserMethods):
       float(z)
     ))
   
+
+  def get_matrix(self):
+    X, Y, Z, Txyz = self.matrix
+
+    ret = Matrix((
+    #  X    , Y    , Z    , Txyz
+      (*X, Txyz[0]),
+      (*Y, Txyz[1]),
+      (*Z, Txyz[2]),
+      (0.0, 0.0, 0.0, 1.0),
+    ))
+    return ret

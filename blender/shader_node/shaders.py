@@ -7,6 +7,7 @@ from .ImageTexture import ImageTexture
 from .ShaderBump import ShaderBump
 from .ShaderUVMap import ShaderUVMap
 from .ShaderInvert import ShaderInvert
+from .ShaderDiffuseBSDF import ShaderDiffuseBSDF
 
 ShaderNode
 
@@ -17,3 +18,4 @@ ShaderNodeMix
 ShaderBump
 ShaderUVMap
 ShaderInvert
+ShaderDiffuseBSDF

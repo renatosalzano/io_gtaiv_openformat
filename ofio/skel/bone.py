@@ -8,9 +8,10 @@ class Bone(ParserMethods):
   def _add_bone(bone):
     pass
 
-  def __init__(this, name: str, _add_bone: Callable):
+  def __init__(this, name: str, _level: int, _add_bone: Callable):
 
     this.name = name
+    this._level = _level
 
     this.Flags = ""
     this.Index = 0
@@ -34,8 +35,8 @@ class Bone(ParserMethods):
     this._add_bone = _add_bone
 
 
-  def set_Children(this, count: int):
-    # this.Children = count
+  def set_Children(this, count: str):
+    this.Children = int(count)
     return this
   
   def set_bone(this, bone_name):
@@ -43,12 +44,12 @@ class Bone(ParserMethods):
     if this.children is None:
       this.children = {}
 
-    this.children[bone_name] = Bone(bone_name, this._add_bone)
+    this.children[bone_name] = Bone(bone_name, this._level + 1, this._add_bone)
     
     return this.children.get(bone_name)
   
 
-  def haschildrens(this):
+  def has_childrens(this):
     return this.children is not None
 
   

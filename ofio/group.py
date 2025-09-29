@@ -4,11 +4,12 @@ from ..utils.parser import ParserMethods
 
 class Group(ParserMethods):
 
-  def _add_child(name: str, child: Child):
+  def set_child_by_bone(name: str, child: Child):
     pass
 
-  def __init__(this, group_name, add_child_to_fragments):
-    this._group_name = group_name
+  def __init__(this, name: str, set_child_by_bone, parent = None):
+    this._name = name
+    this._parent: Group = parent
 
     this.strength = 0.0
     this.forceTransmissionScaleUp = 0.0
@@ -26,29 +27,35 @@ class Group(ParserMethods):
     this.disappearsWhenDead = 0
     this.minDamageForce = 0.0
     this.damageHealth = 0.0
+
     this.group: dict[str, Group] = None
     this.child: Child = None
 
-    this._add_child = add_child_to_fragments
+    this.set_child_by_bone = set_child_by_bone
 
 
-  def set_group(this, group_name):
+  def set_group(this, name: str):
 
     if this.group is None:
       this.group = {}
 
-    name = f'{len(this.group)}.{group_name}'
+    # name = f'{len(this.group)}.{bone_name}'
 
     try:
-      this.group[name] = Group(group_name, this._add_child)
+      this.group[name] = Group(name, this.set_child_by_bone, this)
       return this.group.get(name)
     except:
-      print('ERROR')
+      raise ValueError(f'unexpected error with group[{name}]')
       return None
+
 
   def set_child(this, value):
 
-    this.child = Child(value, this._group_name, this._add_child)
+    # breakpoint()
+
+    # bone_name = this._name.split('.')[1]
+
+    this.child = Child(value, this._name, this.set_child_by_bone, this._parent)
 
     return this.child
   

@@ -16,7 +16,9 @@ class Skel(ParserMethods):
 
     this.bone: dict[str, Bone] = {}
 
+    this._bone_map: dict[str, Bone] = {}
     this._bones: dict[str, str] = {}
+    this._veh_chunked: list[Bone] = []
 
   def set(this, key, value, _):
     
@@ -34,16 +36,29 @@ class Skel(ParserMethods):
   #   # this.Children = number
   #   return this
 
+  def get_bone_by_name(this, bone_name: str):
+
+    if bone_name in this._bone_map:
+      return this._bone_map[bone_name]
+
+    return None
 
   def set_bone(this, bone_name):
 
     debug.log(f'[skel] add bone: "{bone_name}"')
 
-    this.bone[bone_name] = Bone(bone_name, this._add_bone)
+    this.bone[bone_name] = Bone(bone_name, 0, this._add_bone)
     return this.bone.get(bone_name)
     
   
   def _add_bone(this, bone: Bone):
+
+    if bone._level < 2:
+      # -- chassis 0
+      # ----- ...  1
+      this._veh_chunked.append(bone)
+
+    this._bone_map[bone.name] = bone
     this._bones[bone.Index] = bone.name
     store.bones_map[bone.Index] = bone.name
 

@@ -93,6 +93,11 @@ class vec3:
     this.z = z
 
 
+  @property
+  def xyz(this):
+    return (this.x, this.y, this.z)
+  
+
   def __getitem__(this, index):
     if index == 0:
       return this.x

@@ -2,6 +2,7 @@ from .group import Group
 from .child import Child
 
 from ..utils.parser import ParserMethods
+from ..utils import debug
 
 class Fragments(ParserMethods):
 
@@ -25,20 +26,27 @@ class Fragments(ParserMethods):
     this.buoyancyFactor = 0.0
     this.flags = ""
     this.group: dict[str, Group] = {}
+
     this._child: dict[str, Child] = {}
+    this._child_map: dict[str, Child] = {}
 
 
   def set_group(this, name: str):
-    this.group = { name: Group(name, this.set_child) }
+    this.group = { name: Group(name, this.set_child_by_bone) }
     return this.group.get(name)
   
 
-  def set_child(this, key: str, value: Child):
-    this._child[key] = value
+  def set_child_by_bone(this, bone_name: str, child: Child):
+    debug.log(f'[fragments] SET CHILD "{bone_name}"')
+    this._child[bone_name] = child
+    this._child_map[child._group_index] = child
 
 
-  def get_child(this, key: str):
+  def get_child(this, bone_name: str):
     
-    if key in this._child:
-      return this._child[key]
+    if bone_name in this._child:
+      debug.log(f'[fragments] FOUND CHILD "{bone_name}"')
+      return this._child[bone_name]
+    debug.log(f'[fragments] NOT FOUND CHILD "{bone_name}"')
     return None
+  
